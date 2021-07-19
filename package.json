@@ -1,0 +1,329 @@
+{
+  "name": "miniprogram",
+  "displayName": "uniapp小程序扩展",
+  "description": "微信小程序扩展,uniapp,miniprogram,uni",
+  "version": "0.2.9",
+  "publisher": "evils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EvStorM/uniapp-vscode"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "engines": {
+    "vscode": "^1.39.0"
+  },
+  "icon": "resources/images/uniApp.png",
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "workspaceContains:minapp.cjson",
+    "onLanguage:wxml",
+    "onLanguage:vue"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "minapp-vscode",
+      "properties": {
+        "minapp-vscode.disableCustomComponentAutocomponent": {
+          "type": "boolean",
+          "description": "禁止自定义组件的自动补全（自定义组件自动补全需要遍历组件文件，可能会影响性能）",
+          "default": false
+        },
+        "minapp-vscode.resolveRoots": {
+          "type": "array",
+          "description": "解析文件引用关系用的根目录",
+          "default": [
+            "node_modules",
+            "src"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "minapp-vscode.showSuggestionOnEnter": {
+          "type": "boolean",
+          "description": "是否在按下 Enter 键后出自动补全（更新此配置后需要重启 vscode 才能生效）",
+          "default": false
+        },
+        "minapp-vscode.linkAttributeNames": {
+          "type": "array",
+          "description": "指定 link 功能作用的标签属性，默认有 src，即 src 后面的路径会当作一个文件路径来解析；设置为空数组可以禁用 link 功能",
+          "default": [
+            "src"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "minapp-vscode.formatMaxLineCharacters": {
+          "type": "number",
+          "description": "格式化时，单行允许的最长的长度(只针对默认的格式化工具)",
+          "default": 100
+        },
+        "minapp-vscode.reserveTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "格式化时，不处理的标签，即保持标签中的内容和格式化前一模一样，不会出现多余的换行(只针对默认的格式化工具)",
+          "default": []
+        },
+        "minapp-vscode.disableDecorate": {
+          "type": "boolean",
+          "description": "禁用模板文件中 js 变量自定义样式的功能",
+          "default": true
+        },
+        "minapp-vscode.decorateComplexInterpolation": {
+          "type": "boolean",
+          "description": "如果设置为 true, 则如果 {{ }} 中是表达式，也添加指定的样式；否则只会匹配 {{ }} 中的为单个变量的情况",
+          "default": true
+        },
+        "minapp-vscode.decorateType": {
+          "type": "object",
+          "description": "指定模板文件中 js 变量装饰的样式。可配置的属性有 https://code.visualstudio.com/docs/extensionAPI/vscode-api#DecorationRenderOptions",
+          "default": {
+            "color": "#ba68c8"
+          }
+        },
+        "minapp-vscode.snippets": {
+          "type": "object",
+          "description": "自定义 snippets，与系统 snippets 配置类似（注意：如果 key 和默认提供的 snippet 重复，会覆盖掉默认的）",
+          "default": {
+            "wxml": {
+              "open-data": {
+                "body": "<open-data type=\"${1|groupName,userNickName,userAvatarUrl,userGender,userCity,userProvince,userCountry,userLanguage|}\" lang=\"${2|en,zh_CN,zh_TW|}\" />$0"
+              }
+            },
+            "pug": {
+              "open-data": {
+                "body": "open-data(type=\"${1|groupName,userNickName,userAvatarUrl,userGender,userCity,userProvince,userCountry,userLanguage|}\" lang=\"${2|en,zh_CN,zh_TW|}\")$0"
+              }
+            }
+          }
+        },
+        "minapp-vscode.disableAutoConfig": {
+          "type": "boolean",
+          "description": "默认在启动时会自动相关文件关联的配置项，配置成功后会将此配置自动设置成 true，避免下次启动再重新配置",
+          "default": true
+        },
+        "minapp-vscode.selfCloseTags": {
+          "type": "array",
+          "description": "指定自我闭合的标签，用于自动补全时生成代码",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "icon",
+            "progress",
+            "checkbox",
+            "input",
+            "radio",
+            "slider",
+            "switch",
+            "audio",
+            "image",
+            "video",
+            "camera",
+            "live-player",
+            "live-pusher",
+            "map",
+            "canvas",
+            "web-view",
+            "open-data"
+          ]
+        },
+        "minapp-vscode.wxmlQuoteStyle": {
+          "type": "string",
+          "default": "\"",
+          "description": "自定义 wxml 自动补全是生成的引号"
+        },
+        "minapp-vscode.pugQuoteStyle": {
+          "type": "string",
+          "default": "'",
+          "description": "自定义 pug 自动补全是生成的引号"
+        },
+        "minapp-vscode.globalStyleFiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "全局的样式文件，系统会自动从这些指定的文件中获取 className，用于模板中的 class 补全"
+        },
+        "minapp-vscode.styleExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "wxss",
+            "css",
+            "less",
+            "scss"
+          ],
+          "description": "当前样式文件的后缀中，系统会自动查找和当前模板同名的样式文件，用于模板中的 class 补全"
+        },
+        "minapp-vscode.wxmlFormatter": {
+          "type": "string",
+          "default": "wxml",
+          "enum": [
+            "wxml",
+            "prettier",
+            "prettyHtml"
+          ],
+          "description": "wxml 格式化工具"
+        },
+        "minapp-vscode.prettyHtml": {
+          "type": "object",
+          "default": {
+            "useTabs": false,
+            "tabWidth": 2,
+            "printWidth": 100,
+            "singleQuote": false,
+            "usePrettier": true,
+            "wrapAttributes": false,
+            "sortAttributes": false
+          },
+          "description": "prettyHtml 配置"
+        },
+        "minapp-vscode.prettier": {
+          "type": "object",
+          "default": {
+            "useTabs": false,
+            "tabWidth": 2,
+            "printWidth": 100,
+            "singleQuote": false
+          },
+          "description": "prettier 配置"
+        },
+        "minapp-vscode.documentSelector": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": [
+            "wxml",
+            "html",
+            "vue-html"
+          ],
+          "description": "关联的文件类型，默认关联 wxml，如可以加上 html，这样在 html 中也可以有 wxml 的功能"
+        },
+        "minapp-vscode.sass": {
+          "type": "object",
+          "description": "scss/sass 配置，用于解析 scss/sass 文件，方便样式名称在 wxml 模板中自动补全"
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "wxml",
+        "aliases": [
+          "wxml",
+          "wxml"
+        ],
+        "extensions": [
+          ".wxml"
+        ],
+        "configuration": "./languages/language-wxml-configuration.json"
+      },
+      {
+        "id": "json",
+        "extensions": [
+          ".json"
+        ]
+      },
+      {
+        "id": "wxs",
+        "extensions": [
+          ".wxs"
+        ]
+      },
+      {
+        "id": "wxss",
+        "extensions": [
+          ".wxss"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "wxml",
+        "scopeName": "text.html.wxml",
+        "path": "./syntaxes/wxml.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/wxjs.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/wxjs.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/unijs.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/unijs.json"
+      },
+      {
+        "language": "wxs",
+        "path": "./snippets/wxjs.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/wxxml.json"
+      },
+      {
+        "language": "vue-html",
+        "path": "./snippets/uniml.json"
+      },
+      {
+        "language": "wxml",
+        "path": "./snippets/wxxml.json"
+      },
+      {
+        "language": "json",
+        "path": "./snippets/wxjson.json"
+      }
+    ]
+  },
+  "dependencies": {
+    "@minapp/common": "^3.0.0",
+    "@minapp/wxml-parser": "^2.1.5",
+    "read-pkg-up": "6.0.0",
+    "resolve": "^1.20.0",
+    "tslib": "^2.3.0"
+  },
+  "optionalDependencies": {
+    "prettier": "^1.16.4"
+  },
+  "devDependencies": {
+    "json5": "^0.5.1",
+    "mora-common": "^1.0.12",
+    "@serpent/dev-kits": "~1.1.0",
+    "@types/prettier": "~2.3.2",
+    "@types/resolve": "1.20.1",
+    "@types/sass": "~1.16.1",
+    "vscode": "^1.1.37",
+    "@types/glob": "^7.1.1",
+    "@types/node": "^10.12.21",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "prettier": "1.18.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode-test": "^1.2.0"
+  }
+}

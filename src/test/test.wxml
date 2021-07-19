@@ -1,0 +1,16 @@
+<view class="" hover-class="none" hover-stop-propagation="false"></view>;
+<video
+  class=""
+  src=""
+  initial-time="0"
+  autoplay="false"
+  loop="false"
+  muted="false"
+  direction="0"
+  bindplay=""
+  bindpause=""
+  bindended=""
+  bindtimeupdate=""
+  bind:waiting=""
+  binderror=""
+></video>;

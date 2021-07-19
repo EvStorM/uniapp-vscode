@@ -1,0 +1,18 @@
+{
+    "page.init": {
+        "prefix": "page-init",
+        "body": [
+            "page{",
+            "\t${1}",
+            "};"
+        ],
+        "description": "page"
+    },
+    "center": {
+        "prefix": "t-center",
+        "body": [
+            "text-align:center;"
+        ],
+        "description": "center"
+    }
+}
