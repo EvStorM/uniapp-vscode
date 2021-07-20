@@ -5,7 +5,9 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import { ExtensionContext, languages, workspace } from "vscode";
 
-// import LinkProvider from "./plugin/LinkProvider";
+import LinkProvider from "./plugin/LinkProvider";
+import ActiveTextEditorListener from "./plugin/ActiveTextEditorListener";
+
 import HoverProvider from "./plugin/HoverProvider";
 import WxmlFormatter from "./plugin/WxmlFormatter";
 
@@ -13,8 +15,6 @@ import WxmlAutoCompletion from "./plugin/WxmlAutoCompletion";
 import PugAutoCompletion from "./plugin/PugAutoCompletion";
 import VueAutoCompletion from "./plugin/VueAutoCompletion";
 import WxmlDocumentHighlight from "./plugin/WxmlDocumentHighlight";
-
-import ActiveTextEditorListener from "./plugin/ActiveTextEditorListener";
 
 import { config, configActivate, configDeactivate } from "./plugin/lib/config";
 import { PropDefinitionProvider } from "./plugin/PropDefinitionProvider";
@@ -30,7 +30,7 @@ export function activate(context: ExtensionContext) {
   const formatter = new WxmlFormatter(config);
   const autoCompletionWxml = new WxmlAutoCompletion(config);
   const hoverProvider = new HoverProvider(config);
-  // const linkProvider = new LinkProvider(config);
+  const linkProvider = new LinkProvider(config);
   const autoCompletionPug = new PugAutoCompletion(config);
   const autoCompletionVue = new VueAutoCompletion(
     autoCompletionPug,
@@ -46,17 +46,17 @@ export function activate(context: ExtensionContext) {
   const enter = config.showSuggestionOnEnter ? ["\n"] : [];
 
   context.subscriptions.push(
-    // 给模板中的 脚本 添加特殊颜色
+    //todo 给模板中的 脚本 添加特殊颜色
     new ActiveTextEditorListener(config),
+
+    //todo 添加 link
+    languages.registerDocumentLinkProvider([pug].concat(wxml), linkProvider),
 
     // hover 效果
     languages.registerHoverProvider(
       [pug, vue, html].concat(wxml),
       hoverProvider
     ),
-
-    // 添加 link
-    // languages.registerDocumentLinkProvider([pug].concat(wxml), linkProvider),
 
     // 高亮匹配的标签
     languages.registerDocumentHighlightProvider(wxml, documentHighlight),
@@ -74,6 +74,20 @@ export function activate(context: ExtensionContext) {
     // 自动补全
     languages.registerCompletionItemProvider(
       wxml,
+      autoCompletionWxml,
+      "<",
+      " ",
+      ":",
+      "@",
+      ".",
+      "-",
+      '"',
+      "'",
+      "/",
+      ...enter
+    ),
+    languages.registerCompletionItemProvider(
+      vue,
       autoCompletionWxml,
       "<",
       " ",

@@ -1,3 +1,10 @@
+/*
+ * @Date: 2021-07-19 11:31:48
+ * @LastEditors: E'vils
+ * @LastEditTime: 2021-07-20 15:52:47
+ * @Description: 
+ * @FilePath: /src/plugin/VueAutoCompletion.ts
+ */
 import {
   CompletionItemProvider,
   TextDocument,
@@ -5,10 +12,10 @@ import {
   CancellationToken,
   CompletionContext,
   CompletionItem,
-} from 'vscode'
-import PugAutoCompletion from './PugAutoCompletion'
-import WxmlAutoCompletion from './WxmlAutoCompletion'
-import { getLangForVue } from './lib/helper'
+} from "vscode";
+import PugAutoCompletion from "./PugAutoCompletion";
+import WxmlAutoCompletion from "./WxmlAutoCompletion";
+import { getLangForVue } from "./lib/helper";
 
 export default class implements CompletionItemProvider {
   constructor(public pug: PugAutoCompletion, public wxml: WxmlAutoCompletion) {}
@@ -17,13 +24,23 @@ export default class implements CompletionItemProvider {
     position: Position,
     token: CancellationToken,
     context: CompletionContext
-  ): CompletionItem[] | (Promise<CompletionItem[]>) {
-    let lang = getLangForVue(document, position)
-    if (lang === 'pug') {
-      return this.pug.provideCompletionItems(document, position, token, context)
+  ): CompletionItem[] | Promise<CompletionItem[]> {
+    let lang = getLangForVue(document, position);
+    if (lang === "pug") {
+      return this.pug.provideCompletionItems(
+        document,
+        position,
+        token,
+        context
+      );
     } else if (lang && /mpvue|wxml/.test(lang)) {
-      return this.wxml.provideCompletionItems(document, position, token, context)
+      return this.wxml.provideCompletionItems(
+        document,
+        position,
+        token,
+        context
+      );
     }
-    return []
+    return [];
   }
 }

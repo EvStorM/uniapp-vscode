@@ -8,7 +8,6 @@ import {
   Range,
   TextEditorDecorationType,
 } from "vscode";
-
 const COMMENT_REGEXP = /<!--([\s\S]*?)-->/g;
 const DOUBLE_BIND_REGEXP = /\b(?:[\w-]+).sync\s*=\s*['"]([^'"]*)['"]/g;
 // pug 语言属性前可能是 "("

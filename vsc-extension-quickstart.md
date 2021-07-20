@@ -1,6 +1,13 @@
 <!--
  * @Date: 2021-07-17 22:51:40
  * @LastEditors: E'vils
+ * @LastEditTime: 2021-07-19 18:20:04
+ * @Description: 
+ * @FilePath: /vsc-extension-quickstart.md
+-->
+<!--
+ * @Date: 2021-07-17 22:51:40
+ * @LastEditors: E'vils
  * @LastEditTime: 2021-07-19 17:22:38
  * @Description: 
  * @FilePath: /vsc-extension-quickstart.md

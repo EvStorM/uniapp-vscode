@@ -2,7 +2,7 @@
   "name": "uniapp-vscode",
   "displayName": "uniapp小程序扩展",
   "description": "微信小程序扩展,uniapp,miniprogram,uni",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "publisher": "evils",
   "repository": {
     "type": "git",
@@ -145,17 +145,16 @@
           "default": "\"",
           "description": "自定义 wxml 自动补全是生成的引号"
         },
-        "minapp-vscode.pugQuoteStyle": {
-          "type": "string",
-          "default": "'",
-          "description": "自定义 pug 自动补全是生成的引号"
-        },
         "minapp-vscode.globalStyleFiles": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "全局的样式文件，系统会自动从这些指定的文件中获取 className，用于模板中的 class 补全"
+          "default": [
+            "app.scss",
+            "/style"
+          ],
+          "description": "全局的样式文件，系统会自动从这些指定的文件中获取 className，用于模板中的 class 补全,默认app.scss,以及根目录下style文件夹"
         },
         "minapp-vscode.styleExtensions": {
           "type": "array",
@@ -211,10 +210,9 @@
           "uniqueItems": true,
           "default": [
             "wxml",
-            "html",
             "vue-html"
           ],
-          "description": "关联的文件类型，默认关联 wxml，如可以加上 html，这样在 html 中也可以有 wxml 的功能"
+          "description": "关联的文件类型，默认关联 wxml,vue如可以加上 html，这样在 html 中也可以有 wxml 的功能"
         },
         "minapp-vscode.sass": {
           "type": "object",
@@ -310,20 +308,24 @@
     "prettier": "^1.16.4"
   },
   "devDependencies": {
-    "json5": "^0.5.1",
-    "mora-common": "^1.0.12",
     "@serpent/dev-kits": "~1.1.0",
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^22.1.3",
+    "@types/node": "^10.12.21",
     "@types/prettier": "~2.3.2",
     "@types/resolve": "1.20.1",
     "@types/sass": "~1.16.1",
-    "vscode": "^1.1.37",
-    "@types/glob": "^7.1.1",
-    "@types/node": "^10.12.21",
     "glob": "^7.1.4",
+    "jest": "^22.1.4",
+    "json5": "^0.5.1",
     "mocha": "^6.1.4",
+    "mora-common": "^1.0.12",
     "prettier": "1.18.2",
+    "ts-jest": "^22.0.2",
+    "ts-lint": "^4.5.1",
     "tslint": "^5.12.1",
     "typescript": "^3.3.1",
+    "vscode": "^1.1.37",
     "vscode-test": "^1.2.0"
   }
 }

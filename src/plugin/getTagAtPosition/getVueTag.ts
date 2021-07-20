@@ -12,7 +12,6 @@ export function getVueTag(doc: TextDocument, pos: Position): null | Tag {
     // if (!lang) return null
     return getWxmlTag(doc, pos);
   }
-
   if (lang.includes("pug")) return getPugTag(doc, pos);
   if ("wxml" === lang) return getWxmlTag(doc, pos);
   if ("html" === lang) return getWxmlTag(doc, pos);
