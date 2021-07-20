@@ -4,16 +4,16 @@
 
 代码片段提供,提供组件定义查询
 
-![](https://github.com/EvStorM/uniapp-vscode/blob/master/resources/images/demo.gif?raw=true)
+![功能预览](https://github.com/EvStorM/uniapp-vscode/blob/master/resources/images/demo.gif?raw=true)
 
 ## todo
 
 - api接口的自动提示
 - api接口的文档查看
 
-## 致谢(缝合自)
+## 致谢
 
-感谢(缝合自)以下开源项目：
+感谢以下开源项目：
 
 - [minapp-vscode](https://github.com/wx-minapp/minapp-vscode)
 
