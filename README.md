@@ -4,7 +4,7 @@
 
 代码片段提供,提供组件定义查询
 
-![](https://github.com/EvStorM/uniapp-vscode/resources/images/demo.gif)
+![](https://github.com/EvStorM/uniapp-vscode/blob/master/resources/images/demo.gif?raw=true)
 
 ## todo
 
