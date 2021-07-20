@@ -11,7 +11,7 @@
   "view-for": {
     "prefix": "view-for",
     "body": [
-      "<view class=\"${1}\" v-for=\"(item,index) in list\" :key=\"{index}\" >",
+      "<view class=\"${1}\" v-for=\"(item,index) in list\" :key=\"index\" >",
       "\t${4}",
       "</view>"
     ],
