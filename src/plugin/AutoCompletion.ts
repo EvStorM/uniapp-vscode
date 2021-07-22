@@ -202,8 +202,8 @@ export default abstract class AutoCompletion {
     let filterComponent = (t: TagItem) => filter(t.component.name);
 
     let items = [
-      ...res.customs.filter(filterComponent).map((t) => this.renderTag(t, "a")), // 自定义的组件放在前面
       ...res.natives.filter(filterComponent).map((t) => this.renderTag(t, "c")),
+      ...res.customs.filter(filterComponent).map((t) => this.renderTag(t, "a")), // 自定义的组件放在前面
     ];
 
     // 添加 Snippet
@@ -304,7 +304,7 @@ export default abstract class AutoCompletion {
         this.getCustomOptions(doc)
       );
       let triggers: CompletionItem[] = [];
-
+      console.log(`autocompleteTagAttr:`, res);
       let { natives, basics } = res;
       let noBasics = lc.noBasicAttrsComponents || [];
 
@@ -322,7 +322,6 @@ export default abstract class AutoCompletion {
             return item;
           });
       }
-
       return [
         ...natives.map((a) => this.renderTagAttr(a, "a")),
         ...basics.map((a) => this.renderTagAttr(a, "b")), // 基本属性放最后

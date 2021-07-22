@@ -1,8 +1,8 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-20 15:52:47
- * @Description: 
+ * @LastEditTime: 2021-07-22 01:21:27
+ * @Description:
  * @FilePath: /src/plugin/VueAutoCompletion.ts
  */
 import {
@@ -33,7 +33,7 @@ export default class implements CompletionItemProvider {
         token,
         context
       );
-    } else if (lang && /mpvue|wxml/.test(lang)) {
+    } else if (lang && /mpvue|wxml|vue|vue-html/.test(lang)) {
       return this.wxml.provideCompletionItems(
         document,
         position,

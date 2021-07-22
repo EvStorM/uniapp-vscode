@@ -1,3 +1,10 @@
+/*
+ * @Date: 2021-07-19 11:31:48
+ * @LastEditors: E'vils
+ * @LastEditTime: 2021-07-22 11:29:58
+ * @Description: 
+ * @FilePath: /src/extension.ts
+ */
 /******************************************************************
 MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
@@ -50,7 +57,10 @@ export function activate(context: ExtensionContext) {
     new ActiveTextEditorListener(config),
 
     //todo 添加 link
-    languages.registerDocumentLinkProvider([pug].concat(wxml), linkProvider),
+    languages.registerDocumentLinkProvider(
+      [pug, vue].concat(wxml),
+      linkProvider
+    ),
 
     // hover 效果
     languages.registerHoverProvider(
@@ -67,27 +77,13 @@ export function activate(context: ExtensionContext) {
 
     // DefinitionProvider
     languages.registerDefinitionProvider(
-      [pug].concat(wxml),
+      [pug, vue].concat(wxml),
       propDefinitionProvider
     ),
 
     // 自动补全
     languages.registerCompletionItemProvider(
       wxml,
-      autoCompletionWxml,
-      "<",
-      " ",
-      ":",
-      "@",
-      ".",
-      "-",
-      '"',
-      "'",
-      "/",
-      ...enter
-    ),
-    languages.registerCompletionItemProvider(
-      vue,
       autoCompletionWxml,
       "<",
       " ",

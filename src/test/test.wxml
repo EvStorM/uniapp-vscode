@@ -1,0 +1,12 @@
+<button
+  class="default"
+  size="default"
+  type="primary"
+  plain=""
+  disabled=""
+  loading="false"
+  hover-class="button-hover"
+  hover-stop-propagation="false"
+  form-type="submit|reset"
+  open-type="contact"
+></button>;
