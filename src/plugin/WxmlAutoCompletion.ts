@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-22 10:30:34
+ * @LastEditTime: 2021-07-23 01:52:24
  * @Description:
  * @FilePath: /src/plugin/WxmlAutoCompletion.ts
  */
@@ -72,7 +72,17 @@ export default class extends AutoCompletion implements CompletionItemProvider {
           position
         );
       case ":": // 绑定变量 （也可以是原生小程序的控制语句或事件，如 wx:for, bind:tap）
+        return this.createComponentbindSnippetItems(
+          language,
+          document,
+          position
+        );
       case "@": // 绑定事件
+        return this.createComponentFuncSnippetItems(
+          language,
+          document,
+          position
+        );
       case "-": // v-if
       case ".": // 变量或事件的修饰符
         return this.createSpecialAttributeSnippetItems(

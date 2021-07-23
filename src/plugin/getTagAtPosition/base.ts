@@ -13,7 +13,7 @@ export interface Tag {
   isOnTagName: boolean
   /** 光标位置是否是在 tag attr name 上 */
   isOnAttrName: boolean
-  /** 只有 isOnAttrName 为 true 时才有效 */
+  /** attr name 只有 isOnAttrName 为 true 时才有效 */
   attrName: string
   /** 光标位置是否是在 tag attr value 上 */
   isOnAttrValue: boolean

@@ -1,17 +1,14 @@
 <!--
  * @Date: 2021-07-19 10:36:33
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-22 11:56:36
+ * @LastEditTime: 2021-07-23 10:30:11
  * @Description: 
  * @FilePath: /src/test/test.vue
 -->
 <template lang="wxml">
   <view class="" hover-class="none" hover-stop-propagation="false">
-    <view class=""  hover-class="none" hover-stop-propagation="false">
-      <button  size="default" type="default">
-        按钮文本
-      </button>
-    </view>
+    <u-popup duration="250" closeable="false" @open="" :mode="left"></u-popup>
+    
   </view>
 </template>
 <script lang="ts">
@@ -22,9 +19,7 @@ export default {
       l1: "",
     };
   },
-  methods: {
-    test() {},
-  },
+  methods: {},
 };
 </script>
 <style lang="scss">

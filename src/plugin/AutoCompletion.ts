@@ -111,36 +111,36 @@ export default abstract class AutoCompletion {
       defaultValue = a.enum && a.enum[0].value;
     }
 
-    let { attrQuote, isPug } = this;
+    // let { attrQuote, isPug } = this;
+    let { attrQuote } = this;
 
-    if (a.boolean) {
-      item.insertText = new SnippetString(
-        isPug && defaultValue === "false" ? `${a.name}=false` : a.name
-      );
-    } else {
-      let value = a.addBrace ? "{{${1}}}" : this.setDefault(1, defaultValue);
+    // if (a.boolean) {
+    //   item.insertText = new SnippetString(
+    //     isPug && defaultValue === "false" ? `${a.name}=false` : a.name
+    //   );
+    // } else {
+    let value = a?.addBrace ? "{{${1}}}" : this.setDefault(1, defaultValue);
 
-      // 是否有可选值，如果有可选值则触发命令的自动补全
-      let values = a.enum
-        ? a.enum
-        : a.subAttrs
-        ? a.subAttrs.map((sa) => ({ value: sa.equal }))
-        : [];
-      if (values.length) {
-        value = "${1}";
-        item.command = autoSuggestCommand();
-      }
-
-      item.insertText = new SnippetString(
-        `${a.name}=${attrQuote}${value}${attrQuote}$0`
-      );
+    // 是否有可选值，如果有可选值则触发命令的自动补全
+    let values = a.enum
+      ? a.enum
+      : a.subAttrs
+      ? a.subAttrs.map((sa) => ({ value: sa.equal }))
+      : [];
+    if (values.length) {
+      value = "${1}";
+      item.command = autoSuggestCommand();
     }
+
+    item.insertText = new SnippetString(
+      `${a.name}=${attrQuote}${value}${attrQuote}$0`
+    );
+    // }
 
     item.documentation = new MarkdownString(tagAttr.markdown);
     item.sortText = sortText;
 
     if (a.name === "class") item.command = autoSuggestCommand();
-
     return item;
   }
 
@@ -187,6 +187,25 @@ export default abstract class AutoCompletion {
     return defaultValue !== undefined && defaultValue !== "";
   }
 
+  testR(data: any) {
+    let test = [
+      {
+        attr: {
+          name: "loop",
+          type: { name: "Boolean" },
+          defaultValue: "false",
+          desc: ["是否循环播放"],
+          since: "",
+          enum: [
+            { value: "true", desc: ["循环播放"] },
+            { value: "false", desc: ["不循环播放"] },
+          ],
+        },
+        markdown: JSON.stringify(data),
+      },
+    ];
+    return [...test.map((m) => this.renderTagAttr(m, "a"))];
+  }
   /**
    * 创建组件名称的自动补全
    */
@@ -264,7 +283,8 @@ export default abstract class AutoCompletion {
       } else if (typeof attrValue === "string") {
         if (
           tag.attrName.startsWith("bind") ||
-          tag.attrName.startsWith("catch")
+          tag.attrName.startsWith("catch") ||
+          tag.attrName.startsWith("@")
         ) {
           // 函数自动补全
           return this.autoCompleteMethods(doc, attrValue.replace(/"|'/, ""));
@@ -303,33 +323,122 @@ export default abstract class AutoCompletion {
         lc,
         this.getCustomOptions(doc)
       );
-      let triggers: CompletionItem[] = [];
-      console.log(`autocompleteTagAttr:`, res);
-      let { natives, basics } = res;
-      let noBasics = lc.noBasicAttrsComponents || [];
-
-      if (!noBasics.includes(tag.name)) {
-        triggers = [...Object.keys(lc.custom), ...lc.event.prefixes]
-          .filter((k) => k.length > 1)
-          .map((k) => {
-            // let str = k.substr(0, k.length - 1)
-            // let trigger = k[k.length - 1]
-            // let item = new CompletionItem(str, CompletionItemKind.Constant)
-            let item = new CompletionItem(k, CompletionItemKind.Constant);
-            item.sortText = "z";
-            item.command = autoSuggestCommand();
-            // item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
-            return item;
-          });
-      }
-      return [
-        ...natives.map((a) => this.renderTagAttr(a, "a")),
-        ...basics.map((a) => this.renderTagAttr(a, "b")), // 基本属性放最后
-        ...triggers,
-      ];
+      let { natives } = res;
+      if (!natives.length) return [];
+      let { attrQuote } = this;
+      return natives
+        .filter((e) => !/^bind/g.test(e.attr.name))
+        .map((v) => {
+          let it = new CompletionItem(v.attr.name, CompletionItemKind.Value);
+          it.documentation = new MarkdownString(v.markdown);
+          it.insertText = new SnippetString(
+            `${v.attr.name}=${attrQuote}${v.attr.defaultValue ||
+              ""}${attrQuote}$0`
+          );
+          // it.range = range;
+          return it;
+        });
+      // return this.testR(res.natives[3]);
+      // let { natives, basics } = res;
+      // let triggers: CompletionItem[] = [];
+      // let noBasics = lc.noBasicAttrsComponents || [];
+      // if (!noBasics.includes(tag.name)) {
+      //   triggers = [...Object.keys(lc.custom), ...lc.event.prefixes]
+      //     .filter((k) => k.length > 1)
+      //     .map((k) => {
+      //       // let str = k.substr(0, k.length - 1)
+      //       // let trigger = k[k.length - 1]
+      //       // let item = new CompletionItem(str, CompletionItemKind.Constant)
+      //       let item = new CompletionItem(k, CompletionItemKind.Constant);
+      //       item.sortText = "z";
+      //       item.command = autoSuggestCommand();
+      //       // item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
+      //       return item;
+      //     });
+      // }
+      // return [
+      //   ...natives.map((a) => this.renderTagAttr(a, "a")),
+      //   ...basics.map((a) => this.renderTagAttr(a, "b")), // 基本属性放最后
+      //   ...triggers,
+      // ];
     }
   }
-
+  /**
+   * 绑定动态值
+   */
+  async createComponentbindSnippetItems(
+    lc: LanguageConfig,
+    doc: TextDocument,
+    pos: Position
+  ) {
+    let tag = getTagAtPosition(doc, pos);
+    if (!tag) return [];
+    let res = await autocompleteTagAttr(
+      tag.name,
+      tag.attrs,
+      lc,
+      this.getCustomOptions(doc)
+    );
+    let { natives } = res;
+    if (!natives.length) return [];
+    let { attrQuote } = this;
+    return natives
+      .filter(
+        (e) =>
+          !/^bind/g.test(e.attr.name) ||
+          !/Function|function/g.test(e.attr.type.name)
+      )
+      .map((v) => {
+        let it = new CompletionItem(
+          v.attr.name.replace(/^bind/, ""),
+          CompletionItemKind.Value
+        );
+        it.documentation = new MarkdownString(v.markdown);
+        it.insertText = new SnippetString(
+          `${v.attr.name}=${attrQuote}${v.attr.defaultValue ||
+            ""}${attrQuote}$0`
+        );
+        return it;
+      });
+  }
+  /**
+   * 创建事件函数
+   */
+  async createComponentFuncSnippetItems(
+    lc: LanguageConfig,
+    doc: TextDocument,
+    pos: Position
+  ) {
+    let tag = getTagAtPosition(doc, pos);
+    if (!tag) return [];
+    let res = await autocompleteTagAttr(
+      tag.name,
+      tag.attrs,
+      lc,
+      this.getCustomOptions(doc)
+    );
+    let { natives } = res;
+    if (!natives.length) return [];
+    let { attrQuote } = this;
+    return natives
+      .filter(
+        (e) =>
+          /^bind/g.test(e.attr.name) ||
+          /Function|function/g.test(e.attr.type.name)
+      )
+      .map((v) => {
+        let it = new CompletionItem(
+          v.attr.name.replace(/^bind/, ""),
+          CompletionItemKind.Value
+        );
+        it.documentation = new MarkdownString(v.markdown);
+        it.insertText = new SnippetString(
+          `${v.attr.name.replace(/^bind/, "")}=${attrQuote}${v.attr
+            .defaultValue || ""}${attrQuote}$0`
+        );
+        return it;
+      });
+  }
   /**
    * wxml:
    *    wx:

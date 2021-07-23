@@ -1,12 +1,13 @@
 <button
   class="default"
   size="default"
-  type="primary"
+  type=""
   plain=""
   disabled=""
   loading="false"
   hover-class="button-hover"
   hover-stop-propagation="false"
-  form-type="submit|reset"
-  open-type="contact"
+  form-type="reset"
+  open-type=""
+  hover-start-time="20"
 ></button>;
