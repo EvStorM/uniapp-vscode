@@ -1,7 +1,7 @@
 {
   "name": "uniapp-vscode",
   "displayName": "uniapp小程序扩展",
-  "description": "可能是最好用的uniapp小程序扩展,自动提示标签可用属性,鼠标悬浮查询属性文档",
+  "description": "可能是最好用的uniapp小程序扩展,自动提示标签可用属性,鼠标悬浮查询属性文档,新增支持uview的组件提示",
   "keywords": [
     "uniapp",
     "uview",
@@ -9,7 +9,7 @@
     "小程序",
     "微信小程序"
   ],
-  "version": "0.3.3",
+  "version": "0.3.4",
   "publisher": "evils",
   "repository": {
     "type": "git",
