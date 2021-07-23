@@ -1,12 +1,26 @@
 {
   "name": "uniapp-vscode",
   "displayName": "uniapp小程序扩展",
-  "description": "uniapp小程序扩展,微信小程序扩展,uniapp,miniprogram,uni",
+  "description": "可能是最好用的uniapp小程序扩展,自动提示标签可用属性,鼠标悬浮查询属性文档",
+  "keywords": [
+    "uniapp",
+    "uview",
+    "uni",
+    "小程序",
+    "微信小程序"
+  ],
   "version": "0.3.3",
   "publisher": "evils",
   "repository": {
     "type": "git",
     "url": "https://github.com/EvStorM/uniapp-vscode"
+  },
+  "homepage": "https://evils.cc/uni-plugin",
+  "bugs": "https://github.com/EvStorM/uniapp-vscode/issues",
+  "author": {
+    "name": "Evil's",
+    "email": "evilstorm4344@icloud.com",
+    "url": "https://evils.cc"
   },
   "license": "MIT",
   "scripts": {
@@ -297,11 +311,6 @@
         "path": "./snippets/wxjson.json"
       }
     ]
-  },
-  "jest": {
-    "preset": "./node_modules/@serpent/dev-kits/jest.config.js",
-    "testEnvironment": "node",
-    "collectCoverage": false
   },
   "dependencies": {
     "@minapp/common": "^3.0.0",
