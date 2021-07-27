@@ -1,3 +1,10 @@
+/*
+ * @Date: 2021-07-19 11:31:48
+ * @LastEditors: E'vils
+ * @LastEditTime: 2021-07-27 18:53:10
+ * @Description: 
+ * @FilePath: /src/plugin/getTagAtPosition/base.ts
+ */
 /******************************************************************
 MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc^126.com> (https://github.com/qiu8310)

@@ -10,9 +10,9 @@
    - 在标签上敲``:``弹出能绑定的属性值(过滤掉方法)
    - 在标签的属性上输入``空格键``弹出该属性的可选值
 ## 使用
-   给vue文件的指定``wxml``类型,
+   建议给vue文件的指定``html``类型,可以排除掉``vetur``的代码提示,专注uniapp小程序编写
    ```vue
-   <template lang="wxml">
+   <template lang="html">
    </template>
    ```
 ## 功能预览
@@ -34,3 +34,5 @@
 - [minapp-vscode](https://github.com/wx-minapp/minapp-vscode)
 
 - [w-extension](https://github.com/masterZSH/w-extension)
+  
+- [uview-snippet](https://github.com/xiashui1994/uview-snippet)

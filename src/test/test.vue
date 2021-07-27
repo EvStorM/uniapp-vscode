@@ -1,16 +1,9 @@
-<!--
- * @Date: 2021-07-19 10:36:33
- * @LastEditors: E'vils
- * @LastEditTime: 2021-07-23 11:12:11
- * @Description: 
- * @FilePath: /src/test/test.vue
--->
-<template lang="wxml">
+<template lang="html">
   <view class="" hover-class="none" hover-stop-propagation="false">
-    <u-popup duration="250" closeable="false" @open="" :mode="left"></u-popup>
+    <u-grid-item custom-style="{padding: '30rpx 0'}"></u-grid-item>
   </view>
 </template>
-<script lang="ts">
+<script lang="js">
 export default {
   data() {
     return {
@@ -18,7 +11,24 @@ export default {
       l1: "",
     };
   },
-  methods: {},
+  methods: {
+    test() {
+      uni.addCard({
+        cardList: [],
+        success: (result) => {},
+        fail: () => {},
+        complete: () => {},
+      });
+      uni.add({
+      })
+      uni.createCard({
+        cardList: [],
+        success: (result) => {},
+        fail: () => {},
+        complete: () => {},
+      })
+    },
+  },
 };
 </script>
 <style lang="scss">

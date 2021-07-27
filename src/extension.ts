@@ -1,8 +1,8 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-22 11:29:58
- * @Description: 
+ * @LastEditTime: 2021-07-27 22:51:09
+ * @Description:
  * @FilePath: /src/extension.ts
  */
 /******************************************************************
@@ -16,11 +16,13 @@ import LinkProvider from "./plugin/LinkProvider";
 import ActiveTextEditorListener from "./plugin/ActiveTextEditorListener";
 
 import HoverProvider from "./plugin/HoverProvider";
+import JsHoverProvider from "./plugin/JsHoverProvider";
 import WxmlFormatter from "./plugin/WxmlFormatter";
 
 import WxmlAutoCompletion from "./plugin/WxmlAutoCompletion";
 import PugAutoCompletion from "./plugin/PugAutoCompletion";
-import VueAutoCompletion from "./plugin/VueAutoCompletion";
+import JsAutoCompletion from "./plugin/JsAutoCompletion";
+// import VueAutoCompletion from "./plugin/VueAutoCompletion";
 import WxmlDocumentHighlight from "./plugin/WxmlDocumentHighlight";
 
 import { config, configActivate, configDeactivate } from "./plugin/lib/config";
@@ -37,12 +39,14 @@ export function activate(context: ExtensionContext) {
   const formatter = new WxmlFormatter(config);
   const autoCompletionWxml = new WxmlAutoCompletion(config);
   const hoverProvider = new HoverProvider(config);
+  const jsHoverProvider = new JsHoverProvider(config);
   const linkProvider = new LinkProvider(config);
   const autoCompletionPug = new PugAutoCompletion(config);
-  const autoCompletionVue = new VueAutoCompletion(
-    autoCompletionPug,
-    autoCompletionWxml
-  );
+  const jsAutoCompletion = new JsAutoCompletion(config);
+  // const autoCompletionVue = new VueAutoCompletion(
+  //   autoCompletionPug,
+  //   autoCompletionWxml
+  // );
   const documentHighlight = new WxmlDocumentHighlight(config);
   const propDefinitionProvider = new PropDefinitionProvider(config);
 
@@ -67,6 +71,8 @@ export function activate(context: ExtensionContext) {
       [pug, vue, html].concat(wxml),
       hoverProvider
     ),
+    // js hover
+    languages.registerHoverProvider([vue], jsHoverProvider),
 
     // 高亮匹配的标签
     languages.registerDocumentHighlightProvider(wxml, documentHighlight),
@@ -112,16 +118,23 @@ export function activate(context: ExtensionContext) {
     // trigger 需要是上两者的和
     languages.registerCompletionItemProvider(
       vue,
-      autoCompletionVue,
+      autoCompletionWxml,
       "<",
       " ",
       ":",
       "@",
       ".",
       "-",
-      "(",
       '"',
-      "'"
+      "'",
+      ...enter
+    ),
+    languages.registerCompletionItemProvider(
+      vue,
+      jsAutoCompletion,
+      "\n",
+      " ",
+      ...enter
     )
   );
 }

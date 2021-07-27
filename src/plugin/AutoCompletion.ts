@@ -104,7 +104,7 @@ export default abstract class AutoCompletion {
     let a = tagAttr.attr;
     let item = new CompletionItem(
       a.name,
-      kind === undefined ? CompletionItemKind.Field : kind
+      kind === undefined ? CompletionItemKind.Variable : kind
     );
     let defaultValue = a.defaultValue;
     if (!this.isDefaultValueValid(defaultValue)) {
@@ -187,25 +187,6 @@ export default abstract class AutoCompletion {
     return defaultValue !== undefined && defaultValue !== "";
   }
 
-  testR(data: any) {
-    let test = [
-      {
-        attr: {
-          name: "loop",
-          type: { name: "Boolean" },
-          defaultValue: "false",
-          desc: ["是否循环播放"],
-          since: "",
-          enum: [
-            { value: "true", desc: ["循环播放"] },
-            { value: "false", desc: ["不循环播放"] },
-          ],
-        },
-        markdown: JSON.stringify(data),
-      },
-    ];
-    return [...test.map((m) => this.renderTagAttr(m, "a"))];
-  }
   /**
    * 创建组件名称的自动补全
    */
@@ -221,8 +202,8 @@ export default abstract class AutoCompletion {
     let filterComponent = (t: TagItem) => filter(t.component.name);
 
     let items = [
-      ...res.natives.filter(filterComponent).map((t) => this.renderTag(t, "c")),
-      ...res.customs.filter(filterComponent).map((t) => this.renderTag(t, "a")), // 自定义的组件放在前面
+      ...res.natives.filter(filterComponent).map((t) => this.renderTag(t, "a")),
+      ...res.customs.filter(filterComponent).map((t) => this.renderTag(t, "b")), // 自定义的组件放在前面
     ];
 
     // 添加 Snippet
@@ -304,9 +285,10 @@ export default abstract class AutoCompletion {
             );
           }
           return values.map((v) => {
-            let it = new CompletionItem(v.value, CompletionItemKind.Value);
+            let it = new CompletionItem(v.value, CompletionItemKind.Variable);
             it.documentation = new MarkdownString(v.markdown);
             it.range = range;
+            it.sortText = "a";
             return it;
           });
         }
@@ -335,10 +317,10 @@ export default abstract class AutoCompletion {
             `${v.attr.name}=${attrQuote}${v.attr.defaultValue ||
               ""}${attrQuote}$0`
           );
+          it.sortText = "a";
           // it.range = range;
           return it;
         });
-      // return this.testR(res.natives[3]);
       // let { natives, basics } = res;
       // let triggers: CompletionItem[] = [];
       // let noBasics = lc.noBasicAttrsComponents || [];
@@ -391,13 +373,14 @@ export default abstract class AutoCompletion {
       .map((v) => {
         let it = new CompletionItem(
           v.attr.name.replace(/^bind/, ""),
-          CompletionItemKind.Value
+          CompletionItemKind.Variable
         );
         it.documentation = new MarkdownString(v.markdown);
         it.insertText = new SnippetString(
           `${v.attr.name}=${attrQuote}${v.attr.defaultValue ||
             ""}${attrQuote}$0`
         );
+        it.sortText = "a";
         return it;
       });
   }
@@ -429,13 +412,14 @@ export default abstract class AutoCompletion {
       .map((v) => {
         let it = new CompletionItem(
           v.attr.name.replace(/^bind/, ""),
-          CompletionItemKind.Value
+          CompletionItemKind.Function
         );
         it.documentation = new MarkdownString(v.markdown);
         it.insertText = new SnippetString(
           `${v.attr.name.replace(/^bind/, "")}=${attrQuote}${v.attr
             .defaultValue || ""}${attrQuote}$0`
         );
+        it.sortText = "a";
         return it;
       });
   }
