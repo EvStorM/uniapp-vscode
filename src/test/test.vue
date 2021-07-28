@@ -15,17 +15,23 @@ export default {
     test() {
       uni.addCard({
         cardList: [],
-        success: (result) => {},
-        fail: () => {},
-        complete: () => {},
+        success: (result) => {
+          uni.addCard({
+          })
+        },
+        fail: () => {
+        },
+        complete: () => {
+        },
       });
       uni.add({
-      })
+       })
       uni.createCard({
         cardList: [],
-        success: (result) => {},
-        fail: () => {},
-        complete: () => {},
+        success: (result) => {
+        },
+        fail: () => {
+        },
       })
     },
   },

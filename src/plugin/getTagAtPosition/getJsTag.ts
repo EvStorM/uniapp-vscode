@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-26 18:58:47
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-28 00:21:29
+ * @LastEditTime: 2021-07-28 14:29:42
  * @Description:
  * @FilePath: /src/plugin/getTagAtPosition/getJsTag.ts
  */
@@ -15,9 +15,16 @@ import { TextDocument, Position } from "vscode";
 interface funcName {
   name: string;
   index: number;
+  Start?: number;
+  end?: number;
+  amount?: number;
+  atend?: boolean | null;
 }
 const SINGLE_LINE_REGEXP = /^uni.([a-zA-Z]+)\(/;
-const END_REGEXP = /^\}\)/;
+const END_REGEXP = /\}\)/;
+let codeBlockStart = 0;
+let codeBlockEnd = 0;
+let amount = 0;
 export function getJsTagFunc(
   doc: TextDocument,
   pos: Position
@@ -36,6 +43,9 @@ export function getJsAPIFunc(
   doc: TextDocument,
   pos: Position
 ): null | funcName {
+  codeBlockStart = 0;
+  codeBlockEnd = 0;
+  amount = 0;
   let line = doc.lineAt(pos.line).text.trim();
   let index = pos.character;
   // 处理uni.(xxxxxx)的匹配
@@ -46,9 +56,10 @@ export function getJsAPIFunc(
     let startLine = pos.line;
     let attrs: any = {};
     let name = searchUp(doc, startLine, attrs);
-    if (!name) return null;
+    if (!name || amount !== 0) return null;
     // 判断是否是在函数的传参之中
-    if (!searchDown(doc, startLine + 1, attrs)) return null;
+    let atend = searchDown(doc, startLine + 1, attrs);
+    if (atend) return null;
     return { name, index };
   }
 }
@@ -58,14 +69,19 @@ function searchUp(
   attrs: { [key: string]: any }
 ) {
   let name = "";
-  let atEnd = null;
-  while (lineNum >= 0 && !name && atEnd === null) {
+  while (lineNum >= 0 && !name) {
     let text = doc.lineAt(lineNum).text.trim();
     if (text) {
-      if (END_REGEXP.test(text)) {
-        atEnd = false;
-      } else if (SINGLE_LINE_REGEXP.test(text)) {
+      if (SINGLE_LINE_REGEXP.test(text)) {
         name = RegExp.$1;
+      } else {
+        if (/\}/.test(text)) {
+          codeBlockEnd++;
+        }
+        if (/\{/.test(text)) {
+          codeBlockStart++;
+          amount = codeBlockEnd - codeBlockStart;
+        }
       }
     }
     lineNum--;
@@ -81,10 +97,14 @@ function searchDown(
   while (lineNum < doc.lineCount && atEnd === null) {
     let text = doc.lineAt(lineNum).text.trim();
     if (text) {
-      // 匹配到下一个uni函数
-      if (SINGLE_LINE_REGEXP.test(text)) {
-        atEnd = false;
-      } else if (END_REGEXP.test(text)) {
+      if (/\{/.test(text)) {
+        codeBlockStart++;
+      }
+      if (/\}/.test(text)) {
+        codeBlockEnd++;
+        amount = codeBlockStart - codeBlockEnd;
+      }
+      if (END_REGEXP.test(text) && amount === 0) {
         atEnd = true;
       }
     }

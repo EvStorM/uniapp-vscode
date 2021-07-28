@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-27 23:42:50
+ * @LastEditTime: 2021-07-28 00:32:03
  * @Description:
  * @FilePath: /src/plugin/JsAutoCompletion.ts
  */
@@ -33,7 +33,7 @@ export default class implements CompletionItemProvider {
   constructor(public config: Config) {}
   id = "wxml" as "wxml";
   skip(document: TextDocument, position: Position) {
-    return /[\w\d\$_]/.test(
+    return /[\w\d\$_\}'"]/.test(
       getLastChar(document, new Position(position.line, position.character + 1))
     );
   }
