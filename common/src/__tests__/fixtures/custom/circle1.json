@@ -1,8 +1,0 @@
-{
-  "component": {
-    "desc": ["circle1"]
-  },
-  "usingComponents": {
-    "circle2": "./circle2.json"
-  }
-}
