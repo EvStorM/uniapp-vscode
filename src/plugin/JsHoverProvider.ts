@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-27 23:38:44
+ * @LastEditTime: 2021-07-30 18:27:30
  * @Description:
  * @FilePath: /src/plugin/JsHoverProvider.ts
  */
@@ -35,6 +35,7 @@ export default class implements HoverProvider {
     position: Position,
     token: CancellationToken
   ) {
+    if (!this.config.jsHover) return null;
     let language = document.languageId === "vue";
     if (!language) return;
     let name = getJsTag(document, position);

@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-27 22:51:09
+ * @LastEditTime: 2021-07-30 18:40:12
  * @Description:
  * @FilePath: /src/extension.ts
  */
@@ -71,7 +71,7 @@ export function activate(context: ExtensionContext) {
       [pug, vue, html].concat(wxml),
       hoverProvider
     ),
-    // js hover
+
     languages.registerHoverProvider([vue], jsHoverProvider),
 
     // 高亮匹配的标签
@@ -173,7 +173,7 @@ function autoConfig() {
     }
   });
 
-  c.update("minapp-vscode.disableAutoConfig", true, true);
+  c.update("uniapp-vscode.disableAutoConfig", true, true);
 }
 
 export function schemes(key: string) {

@@ -1,3 +1,10 @@
+/*
+ * @Date: 2021-07-19 11:31:48
+ * @LastEditors: E'vils
+ * @LastEditTime: 2021-07-29 15:48:03
+ * @Description: 
+ * @FilePath: /src/plugin/WxmlFormatter.ts
+ */
 import {
   FormattingOptions,
   DocumentFormattingEditProvider,

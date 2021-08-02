@@ -9,7 +9,7 @@
     "小程序",
     "微信小程序"
   ],
-  "version": "0.3.5",
+  "version": "0.3.6",
   "publisher": "evils",
   "repository": {
     "type": "git",
@@ -45,14 +45,14 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "minapp-vscode",
+      "title": "uniapp-vscode",
       "properties": {
-        "minapp-vscode.disableCustomComponentAutocomponent": {
+        "uniapp-vscode.disableCustomComponentAutocomponent": {
           "type": "boolean",
           "description": "禁止自定义组件的自动补全（自定义组件自动补全需要遍历组件文件，可能会影响性能）",
           "default": false
         },
-        "minapp-vscode.resolveRoots": {
+        "uniapp-vscode.resolveRoots": {
           "type": "array",
           "description": "解析文件引用关系用的根目录",
           "default": [
@@ -63,12 +63,12 @@
             "type": "string"
           }
         },
-        "minapp-vscode.showSuggestionOnEnter": {
+        "uniapp-vscode.showSuggestionOnEnter": {
           "type": "boolean",
           "description": "是否在按下 Enter 键后出自动补全（更新此配置后需要重启 vscode 才能生效）",
           "default": false
         },
-        "minapp-vscode.linkAttributeNames": {
+        "uniapp-vscode.linkAttributeNames": {
           "type": "array",
           "description": "指定 link 功能作用的标签属性，默认有 src，即 src 后面的路径会当作一个文件路径来解析；设置为空数组可以禁用 link 功能",
           "default": [
@@ -78,12 +78,12 @@
             "type": "string"
           }
         },
-        "minapp-vscode.formatMaxLineCharacters": {
+        "uniapp-vscode.formatMaxLineCharacters": {
           "type": "number",
           "description": "格式化时，单行允许的最长的长度(只针对默认的格式化工具)",
           "default": 100
         },
-        "minapp-vscode.reserveTags": {
+        "uniapp-vscode.reserveTags": {
           "type": "array",
           "items": {
             "type": "string"
@@ -91,24 +91,24 @@
           "description": "格式化时，不处理的标签，即保持标签中的内容和格式化前一模一样，不会出现多余的换行(只针对默认的格式化工具)",
           "default": []
         },
-        "minapp-vscode.disableDecorate": {
+        "uniapp-vscode.disableDecorate": {
           "type": "boolean",
           "description": "禁用模板文件中 js 变量自定义样式的功能",
           "default": true
         },
-        "minapp-vscode.decorateComplexInterpolation": {
+        "uniapp-vscode.decorateComplexInterpolation": {
           "type": "boolean",
           "description": "如果设置为 true, 则如果 {{ }} 中是表达式，也添加指定的样式；否则只会匹配 {{ }} 中的为单个变量的情况",
           "default": true
         },
-        "minapp-vscode.decorateType": {
+        "uniapp-vscode.decorateType": {
           "type": "object",
           "description": "指定模板文件中 js 变量装饰的样式。可配置的属性有 https://code.visualstudio.com/docs/extensionAPI/vscode-api#DecorationRenderOptions",
           "default": {
             "color": "#ba68c8"
           }
         },
-        "minapp-vscode.snippets": {
+        "uniapp-vscode.snippets": {
           "type": "object",
           "description": "自定义 snippets，与系统 snippets 配置类似（注意：如果 key 和默认提供的 snippet 重复，会覆盖掉默认的）",
           "default": {
@@ -124,12 +124,12 @@
             }
           }
         },
-        "minapp-vscode.disableAutoConfig": {
+        "uniapp-vscode.disableAutoConfig": {
           "type": "boolean",
           "description": "默认在启动时会自动相关文件关联的配置项，配置成功后会将此配置自动设置成 true，避免下次启动再重新配置",
           "default": true
         },
-        "minapp-vscode.selfCloseTags": {
+        "uniapp-vscode.selfCloseTags": {
           "type": "array",
           "description": "指定自我闭合的标签，用于自动补全时生成代码",
           "items": {
@@ -155,12 +155,12 @@
             "open-data"
           ]
         },
-        "minapp-vscode.wxmlQuoteStyle": {
+        "uniapp-vscode.wxmlQuoteStyle": {
           "type": "string",
           "default": "\"",
           "description": "自定义 wxml 自动补全是生成的引号"
         },
-        "minapp-vscode.globalStyleFiles": {
+        "uniapp-vscode.globalStyleFiles": {
           "type": "array",
           "items": {
             "type": "string"
@@ -171,7 +171,7 @@
           ],
           "description": "全局的样式文件，系统会自动从这些指定的文件中获取 className，用于模板中的 class 补全,默认app.scss,以及根目录下style文件夹"
         },
-        "minapp-vscode.styleExtensions": {
+        "uniapp-vscode.styleExtensions": {
           "type": "array",
           "items": {
             "type": "string"
@@ -184,7 +184,7 @@
           ],
           "description": "当前样式文件的后缀中，系统会自动查找和当前模板同名的样式文件，用于模板中的 class 补全"
         },
-        "minapp-vscode.wxmlFormatter": {
+        "uniapp-vscode.wxmlFormatter": {
           "type": "string",
           "default": "wxml",
           "enum": [
@@ -194,7 +194,7 @@
           ],
           "description": "wxml 格式化工具"
         },
-        "minapp-vscode.prettyHtml": {
+        "uniapp-vscode.prettyHtml": {
           "type": "object",
           "default": {
             "useTabs": false,
@@ -207,7 +207,7 @@
           },
           "description": "prettyHtml 配置"
         },
-        "minapp-vscode.prettier": {
+        "uniapp-vscode.prettier": {
           "type": "object",
           "default": {
             "useTabs": false,
@@ -217,7 +217,7 @@
           },
           "description": "prettier 配置"
         },
-        "minapp-vscode.documentSelector": {
+        "uniapp-vscode.documentSelector": {
           "type": "array",
           "items": {
             "type": "string"
@@ -229,9 +229,19 @@
           ],
           "description": "关联的文件类型，默认关联 wxml,vue如可以加上 html，这样在 html 中也可以有 wxml 的功能"
         },
-        "minapp-vscode.sass": {
+        "uniapp-vscode.sass": {
           "type": "object",
           "description": "scss/sass 配置，用于解析 scss/sass 文件，方便样式名称在 wxml 模板中自动补全"
+        },
+        "uniapp-vscode.jsHover": {
+          "type": "boolean",
+          "description": "js/ts中的uniapp的api文档查询,默认开启,如果已使用ts,则可以手动关闭",
+          "default": true
+        },
+        "uniapp-vscode.jsAutoCompletion": {
+          "type": "boolean",
+          "description": "js/ts中的uniapp的api属性自动完成,默认开启",
+          "default": true
         }
       }
     },
@@ -317,11 +327,8 @@
     "@minapp/wxml-parser": "^2.1.5",
     "read-pkg-up": "6.0.0",
     "resolve": "^1.20.0",
-    "tslib": "^2.3.0",
-    "@serpent/dev-kits": "~0.7.2",
-    "@types/fs-extra": "^5.0.1",
-    "@types/json5": "^0.0.29",
-    "fs-extra": "^5.0.0"
+    "json5": "^0.5.1",
+    "mora-common": "^1.0.12"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -332,13 +339,16 @@
     "@types/sass": "~1.16.1",
     "glob": "^7.1.4",
     "jest": "^22.1.4",
-    "json5": "^0.5.1",
     "mocha": "^6.1.4",
-    "mora-common": "^1.0.12",
     "prettier": "1.18.2",
     "ts-jest": "^22.0.2",
     "typescript": "^3.3.1",
     "vscode": "^1.1.37",
-    "vscode-test": "^1.2.0"
+    "vscode-test": "^1.2.0",
+    "@serpent/dev-kits": "~0.7.2",
+    "@types/fs-extra": "^5.0.1",
+    "@types/json5": "^0.0.29",
+    "fs-extra": "^5.0.0",
+    "tslib": "^1.9.0"
   }
 }

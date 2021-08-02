@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-22 10:13:59
+ * @LastEditTime: 2021-07-30 18:26:28
  * @Description:
  * @FilePath: /src/plugin/HoverProvider.ts
  */
@@ -28,7 +28,6 @@ import { getLanguage, getCustomOptions } from "./lib/helper";
 
 export default class implements HoverProvider {
   constructor(public config: Config) {}
-
   async provideHover(
     document: TextDocument,
     position: Position,
@@ -59,6 +58,7 @@ export default class implements HoverProvider {
         co
       );
     }
+    // return new Hover(new MarkdownString(JSON.stringify(markdown)));
     return markdown ? new Hover(new MarkdownString(markdown)) : null;
   }
 }

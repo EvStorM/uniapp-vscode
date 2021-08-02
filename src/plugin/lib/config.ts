@@ -56,6 +56,8 @@ export interface Config {
   documentSelector: string[];
   /** */
   sass: Options;
+  jsHover: Boolean;
+  jsAutoCompletion: Boolean;
 }
 
 export const config: Config = {
@@ -81,10 +83,12 @@ export const config: Config = {
   prettier: {},
   documentSelector: ["wxml"],
   sass: {},
+  jsHover: true,
+  jsAutoCompletion: true,
 };
 
 function getConfig() {
-  const minapp = vscode.workspace.getConfiguration("minapp-vscode");
+  const minapp = vscode.workspace.getConfiguration("uniapp-vscode");
   config.disableCustomComponentAutocomponent = minapp.get(
     "disableCustomComponentAutocomponent",
     false
@@ -112,6 +116,8 @@ function getConfig() {
   config.prettier = minapp.get("prettier", {});
   config.documentSelector = minapp.get("documentSelector", ["wxml"]);
   config.sass = minapp.get("sass", {});
+  config.jsHover = minapp.get("jsHover", true);
+  config.jsAutoCompletion = minapp.get("jsAutoCompletion", true);
 }
 
 function getResolveRoots(doc: vscode.TextDocument) {

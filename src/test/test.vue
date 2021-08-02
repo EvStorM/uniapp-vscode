@@ -1,9 +1,8 @@
 <template lang="html">
-  <view class="" hover-class="none" hover-stop-propagation="false">
-    <u-grid-item custom-style="{padding: '30rpx 0'}"></u-grid-item>
-  </view>
+  <view hover-class="none" hover-stop-propagation="false"> </view>
+  <u-icon></u-icon>
 </template>
-<script lang="js">
+<script lang="ts">
 export default {
   data() {
     return {
@@ -15,24 +14,19 @@ export default {
     test() {
       uni.addCard({
         cardList: [],
+        url: "   ",
         success: (result) => {
-          uni.addCard({
-          })
+          uni.addCard({});
         },
-        fail: () => {
-        },
-        complete: () => {
-        },
+        fail: () => {},
+        complete: () => {},
       });
-      uni.add({
-       })
+      uni.add({});
       uni.createCard({
         cardList: [],
-        success: (result) => {
-        },
-        fail: () => {
-        },
-      })
+        success: (result) => {},
+        fail: () => {},
+      });
     },
   },
 };

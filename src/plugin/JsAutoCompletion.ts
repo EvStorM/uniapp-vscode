@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-28 00:32:03
+ * @LastEditTime: 2021-07-31 13:23:41
  * @Description:
  * @FilePath: /src/plugin/JsAutoCompletion.ts
  */
@@ -43,6 +43,7 @@ export default class implements CompletionItemProvider {
     token: CancellationToken,
     context: CompletionContext
   ): Promise<CompletionItem[]> {
+    if (!this.config.jsAutoCompletion) return [] as any;
     if (token.isCancellationRequested) {
       return Promise.resolve([]);
     }
@@ -83,7 +84,7 @@ export default class implements CompletionItemProvider {
     if (!tag) return [];
     let it = new CompletionItem(JSON.stringify(tag), CompletionItemKind.Value);
     it.documentation = new MarkdownString("这是测试工程");
-    it.insertText = new SnippetString("test=1");
+    it.insertText = new SnippetString(JSON.stringify(tag));
     it.sortText = "a";
     return [it];
   }
