@@ -2,7 +2,7 @@
   <view hover-class="none" hover-stop-propagation="false"> </view>
   <u-icon></u-icon>
 </template>
-<script lang="ts">
+<script>
 export default {
   data() {
     return {
@@ -14,7 +14,7 @@ export default {
     test() {
       uni.addCard({
         cardList: [],
-        url: "   ",
+        url: " ",
         success: (result) => {
           uni.addCard({});
         },

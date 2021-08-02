@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-30 18:26:28
+ * @LastEditTime: 2021-08-02 15:24:53
  * @Description:
  * @FilePath: /src/plugin/HoverProvider.ts
  */
@@ -18,14 +18,13 @@ import {
   Hover,
   MarkdownString,
 } from "vscode";
+import { getTagAtPosition } from "./getTagAtPosition/";
+import { Config } from "./lib/config";
 import {
   hoverComponentAttrMarkdown,
   hoverComponentMarkdown,
-} from "@minapp/common";
-import { getTagAtPosition } from "./getTagAtPosition/";
-import { Config } from "./lib/config";
+} from "evils-uniapp";
 import { getLanguage, getCustomOptions } from "./lib/helper";
-
 export default class implements HoverProvider {
   constructor(public config: Config) {}
   async provideHover(
@@ -58,7 +57,6 @@ export default class implements HoverProvider {
         co
       );
     }
-    // return new Hover(new MarkdownString(JSON.stringify(markdown)));
     return markdown ? new Hover(new MarkdownString(markdown)) : null;
   }
 }

@@ -20,7 +20,7 @@ import {
   autocompleteTagAttr,
   autocompleteTagAttrValue,
   autocompleteTagName,
-} from "@minapp/common";
+} from "evils-uniapp";
 
 import * as path from "path";
 
