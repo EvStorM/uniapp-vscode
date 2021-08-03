@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-26 18:58:47
  * @LastEditors: E'vils
- * @LastEditTime: 2021-08-02 19:42:56
+ * @LastEditTime: 2021-08-03 17:08:49
  * @Description:
  * @FilePath: /src/plugin/getTagAtPosition/getJsTag.ts
  */
@@ -184,7 +184,14 @@ function codeAnalysis(
     }
   }
 }
-
+/**
+ * 计算向上取到的空格
+ * @param {string} REP1
+ * @param {string} str
+ * @param {string} name
+ * @param {string} REP2
+ * @return {*}
+ */
 function codeQuotes(REP1: string, str: string, name: string, REP2?: string) {
   var regex1 = new RegExp(REP1, "g");
   let ns = `${name}Start`;

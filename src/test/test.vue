@@ -12,21 +12,7 @@ export default {
   },
   methods: {
     test() {
-      uni.addCard({
-        cardList: [],
-        url: " ",
-        success: (result) => {
-          uni.test({});
-        },
-        fail: () => {},
-        complete: () => {},
-      });
-      uni.test({});
-      uni.createCard({
-        cardList: [],
-        success: (result) => {},
-        fail: () => {},
-      });
+      uni.getAccountInfoSync({});
     },
   },
 };

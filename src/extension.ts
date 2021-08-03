@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-30 18:40:12
+ * @LastEditTime: 2021-08-03 16:33:28
  * @Description:
  * @FilePath: /src/extension.ts
  */
@@ -133,6 +133,7 @@ export function activate(context: ExtensionContext) {
       vue,
       jsAutoCompletion,
       "\n",
+      ".",
       " ",
       ...enter
     )

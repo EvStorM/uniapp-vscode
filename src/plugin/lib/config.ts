@@ -58,6 +58,7 @@ export interface Config {
   sass: Options;
   jsHover: Boolean;
   jsAutoCompletion: Boolean;
+  jsAutoApi: Boolean;
 }
 
 export const config: Config = {
@@ -85,6 +86,7 @@ export const config: Config = {
   sass: {},
   jsHover: true,
   jsAutoCompletion: true,
+  jsAutoApi: true,
 };
 
 function getConfig() {
@@ -118,6 +120,7 @@ function getConfig() {
   config.sass = minapp.get("sass", {});
   config.jsHover = minapp.get("jsHover", true);
   config.jsAutoCompletion = minapp.get("jsAutoCompletion", true);
+  config.jsAutoApi = minapp.get("jsAutoApi", true);
 }
 
 function getResolveRoots(doc: vscode.TextDocument) {

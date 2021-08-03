@@ -242,6 +242,11 @@
           "type": "boolean",
           "description": "js/ts中的uniapp的api属性自动完成,默认开启",
           "default": true
+        },
+        "uniapp-vscode.jsAutoApi": {
+          "type": "boolean",
+          "description": "js/ts中的uniapp的api接口自动完成,默认开启",
+          "default": true
         }
       }
     },
@@ -323,7 +328,7 @@
     ]
   },
   "dependencies": {
-    "evils-uniapp": "^3.0.5",
+    "evils-uniapp": "3.1.2",
     "@minapp/wxml-parser": "^2.1.5",
     "resolve": "^1.20.0",
     "read-pkg-up": "^6.0.0",
