@@ -16,12 +16,12 @@ export default {
         cardList: [],
         url: " ",
         success: (result) => {
-          uni.addCard({});
+          uni.test({});
         },
         fail: () => {},
         complete: () => {},
       });
-      uni.add({});
+      uni.test({});
       uni.createCard({
         cardList: [],
         success: (result) => {},

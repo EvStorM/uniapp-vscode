@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-26 18:58:47
  * @LastEditors: E'vils
- * @LastEditTime: 2021-08-02 11:41:30
+ * @LastEditTime: 2021-08-02 19:42:56
  * @Description:
  * @FilePath: /src/plugin/getTagAtPosition/getJsTag.ts
  */
@@ -15,6 +15,7 @@ import { TextDocument, Position } from "vscode";
 interface funcName {
   name: string;
   index: number;
+  attrs: { [key: string]: string | boolean };
   Start?: number;
   end?: number;
   amount?: number;
@@ -58,7 +59,7 @@ export function getJsTagFunc(
   // 处理uni.(xxxxxx)的匹配
   if (SINGLE_LINE_REGEXP.test(line)) {
     let name = RegExp.$1;
-    return { name, index };
+    return { name, attrs: {}, index };
   } else {
     return null;
   }
@@ -73,7 +74,7 @@ export function getJsAPIFunc(
   // 处理uni.(xxxxxx)的匹配
   if (SINGLE_LINE_REGEXP.test(line)) {
     let name = RegExp.$1;
-    return { name, index };
+    return { name, attrs: {}, index };
   } else {
     let startLine = pos.line;
     let name = searchUp(doc, startLine, index);
@@ -88,8 +89,8 @@ export function getJsAPIFunc(
     }
     // 判断是否是在函数的传参之中
     let atend = searchDown(doc, startLine + 1, index);
-    if (atend) return { name: JSON.stringify(codeNum), index, end: 3 };
-    return { name, index };
+    if (atend) return null;
+    return { name, attrs: {}, index };
   }
 }
 function searchUp(doc: TextDocument, lineNum: number, index: number) {

@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-30 18:27:30
+ * @LastEditTime: 2021-08-02 19:18:43
  * @Description:
  * @FilePath: /src/plugin/JsHoverProvider.ts
  */
@@ -18,15 +18,11 @@ import {
   Hover,
   MarkdownString,
 } from "vscode";
-// import {
-//   hoverComponentAttrMarkdown,
-//   hoverComponentMarkdown,
-// } from "@minapp/common";
+import { hoverApiMarkdown } from "evils-uniapp";
 import { getJsTag } from "./getTagAtPosition";
 import { Config } from "./lib/config";
-import // getLanguage,
-//  getCustomOptions
-"./lib/helper";
+
+import { getLanguage } from "./lib/helper";
 
 export default class implements HoverProvider {
   constructor(public config: Config) {}
@@ -36,11 +32,15 @@ export default class implements HoverProvider {
     token: CancellationToken
   ) {
     if (!this.config.jsHover) return null;
-    let language = document.languageId === "vue";
-    if (!language) return;
-    let name = getJsTag(document, position);
-    if (!name) return;
-    return new Hover(new MarkdownString(JSON.stringify(name)));
+    let language = getLanguage(document, position);
+    if (!language) return null;
+    let tag = getJsTag(document, position);
+    if (!tag) return;
+
+    let markdown: string | undefined;
+    markdown = await hoverApiMarkdown(tag.name, language);
+    return markdown ? new Hover(new MarkdownString(markdown)) : null;
+    // return new Hover(new MarkdownString(JSON.stringify(name)));
   }
 
   getAtPosition() {}

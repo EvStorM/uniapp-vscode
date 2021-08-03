@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-07-31 13:23:41
+ * @LastEditTime: 2021-08-03 10:34:09
  * @Description:
  * @FilePath: /src/plugin/JsAutoCompletion.ts
  */
@@ -25,6 +25,8 @@ import {
 } from "vscode";
 import { getJsApi } from "./getTagAtPosition";
 import { Config } from "./lib/config";
+
+import { autoApiAttr } from "evils-uniapp";
 
 import { getLanguage, getLastChar } from "./lib/helper";
 import { LanguageConfig } from "./lib/language";
@@ -82,10 +84,18 @@ export default class implements CompletionItemProvider {
   ) {
     let tag = getJsApi(doc, pos);
     if (!tag) return [];
-    let it = new CompletionItem(JSON.stringify(tag), CompletionItemKind.Value);
-    it.documentation = new MarkdownString("这是测试工程");
-    it.insertText = new SnippetString(JSON.stringify(tag));
-    it.sortText = "a";
-    return [it];
+
+    let res = await autoApiAttr(tag.name, tag.attrs, lc);
+    let { natives } = res;
+    if (!natives.length) return [];
+    return natives.map((v) => {
+      let it = new CompletionItem(v.attr.name, CompletionItemKind.Value);
+      it.documentation = new MarkdownString(v.markdown);
+      it.insertText = new SnippetString(
+        `${v.attr.name}:${v.attr.defaultValue || ""},$0`
+      );
+      it.sortText = "a";
+      return it;
+    });
   }
 }
