@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-26 18:58:47
  * @LastEditors: E'vils
- * @LastEditTime: 2021-08-03 17:08:49
+ * @LastEditTime: 2021-08-03 23:07:06
  * @Description:
  * @FilePath: /src/plugin/getTagAtPosition/getJsTag.ts
  */
@@ -73,6 +73,16 @@ export function getJsAPIFunc(
   let index = pos.character;
   // 处理uni.(xxxxxx)的匹配
   if (SINGLE_LINE_REGEXP.test(line)) {
+    if (
+      /;$/.test(
+        doc
+          .lineAt(pos.line)
+          .text.slice(0, index)
+          .trim()
+      )
+    ) {
+      return null;
+    }
     let name = RegExp.$1;
     return { name, attrs: {}, index };
   } else {
@@ -120,17 +130,12 @@ function searchDown(doc: TextDocument, lineNum: number, index: number) {
   while (lineNum < doc.lineCount && atEnd === null) {
     let text = doc.lineAt(lineNum).text.trim();
     if (text) {
-      // if (/\{/.test(text)) {
-      //   codeNum.codeBlockStart++;
-      // }
-      // if (/\}/.test(text)) {
-      //   codeNum.codeBlockEnd++;
-      //   codeNum.codeBlockAmount = codeNum.codeBlockStart - codeNum.codeBlockEnd;
-      // }
       codeAnalysis("{", "}", text, "codeBlock", false);
-      // codeAnalysis("[", "]", text, "brackets", false);
       if (END_REGEXP.test(text) && codeNum.codeBlockAmount === 0) {
         atEnd = true;
+      }
+      if (/\<\/script\>/.test(text)) {
+        atEnd = false;
       }
     }
     lineNum++;

@@ -12,7 +12,8 @@ export default {
   },
   methods: {
     test() {
-      uni.getAccountInfoSync({});
+      uni.getBLEDeviceServices({});
+      uni.navigateTo({});
     },
   },
 };
