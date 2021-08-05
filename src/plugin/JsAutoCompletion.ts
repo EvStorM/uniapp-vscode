@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-19 11:31:48
  * @LastEditors: E'vils
- * @LastEditTime: 2021-08-03 16:57:08
+ * @LastEditTime: 2021-08-05 14:02:23
  * @Description:
  * @FilePath: /src/plugin/JsAutoCompletion.ts
  */
@@ -98,6 +98,12 @@ export default class implements CompletionItemProvider {
     if (!this.config.jsAutoApi) return [] as any;
     let tag = getJsApi(doc, pos);
     if (!tag) return [];
+    //!测试块
+    // console.log(`autoApiAttr`, autoApiAttr);
+    // let it = new CompletionItem(tag.name, CompletionItemKind.Value);
+    // it.insertText = new SnippetString(`${tag.name}:,`);
+    // return [it];
+    //!功能
     let res = await autoApiAttr(tag.name, tag.attrs, lc);
     let { natives } = res;
     if (!natives.length) return [];
@@ -107,10 +113,13 @@ export default class implements CompletionItemProvider {
       let types = v.attr.type.name;
       let insert = "";
       if (types == "Function" || types == "function") {
-        insert = `(result)=>{$0}`;
+        insert = `(${v.attr.name})=>{$0}`;
       }
       if (types == "String" || types == "string") {
         insert = `'$0'`;
+      }
+      if (/Array|array/.test(types)) {
+        insert = `[$0]`;
       }
       if (types == "Object" || types == "Object") {
         insert = `{$0}`;

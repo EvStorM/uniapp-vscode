@@ -2,3 +2,7 @@
 .vscode-test/**
 .gitignore
 vsc-extension-quickstart.md
+resources/**
+.history/**
+src/app.scss
+src/test

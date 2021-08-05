@@ -6,3 +6,4 @@ node_modules
 .history
 languages
 dist
+src/app.scss

@@ -1,3 +1,10 @@
+/*
+ * @Date: 2021-07-19 11:31:48
+ * @LastEditors: E'vils
+ * @LastEditTime: 2021-08-03 23:16:45
+ * @Description: 
+ * @FilePath: /src/plugin/getTagAtPosition/getVueTag.ts
+ */
 import { TextDocument, Position } from "vscode";
 import { Tag } from "./base";
 // import { getLangForVue } from '../lib/helper'

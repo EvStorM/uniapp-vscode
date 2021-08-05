@@ -33,7 +33,7 @@
   "engines": {
     "vscode": "^1.39.0"
   },
-  "icon": "resources/images/uniApp.png",
+  "icon": "uniApp.png",
   "categories": [
     "Programming Languages"
   ],

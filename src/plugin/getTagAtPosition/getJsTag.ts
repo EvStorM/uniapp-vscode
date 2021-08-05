@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-26 18:58:47
  * @LastEditors: E'vils
- * @LastEditTime: 2021-08-03 23:07:06
+ * @LastEditTime: 2021-08-05 13:40:52
  * @Description:
  * @FilePath: /src/plugin/getTagAtPosition/getJsTag.ts
  */
@@ -58,6 +58,21 @@ export function getJsTagFunc(
   let index = pos.character;
   // 处理uni.(xxxxxx)的匹配
   if (SINGLE_LINE_REGEXP.test(line)) {
+    // 暂时排除;后的匹配
+    if (
+      /;$/.test(
+        doc
+          .lineAt(pos.line)
+          .text.slice(0, index)
+          .trim()
+      )
+    ) {
+      return null;
+    }
+    // const inputWordRange = doc.getWordRangeAtPosition(pos, /\b[\w-:.]+\b/); // 正在输入的词的范围
+    // const posWord = inputWordRange ? doc.getText(inputWordRange) : ""; // 正在输入的词
+    // if (!posWord) return null;
+    // let name = posWord.replace("^uni.", "");
     let name = RegExp.$1;
     return { name, attrs: {}, index };
   } else {
@@ -73,6 +88,7 @@ export function getJsAPIFunc(
   let index = pos.character;
   // 处理uni.(xxxxxx)的匹配
   if (SINGLE_LINE_REGEXP.test(line)) {
+    // 暂时排除;后的匹配
     if (
       /;$/.test(
         doc
@@ -88,37 +104,44 @@ export function getJsAPIFunc(
   } else {
     let startLine = pos.line;
     let name = searchUp(doc, startLine, index);
+    if (!name) return null;
+    // 判断是否是在函数的传参之中
+    let atend = searchDown(doc, startLine + 1, index);
     if (
-      !name ||
-      codeNum.codeBlockAmount !== 0 ||
-      codeNum.bracketsAmount !== 0 ||
-      codeNum.singleQuotesAmount !== 0 ||
-      codeNum.quotesAmount !== 0
+      !atend ||
+      codeNum.bracketsAmount ||
+      codeNum.codeBlockAmount ||
+      codeNum.quotesAmount ||
+      codeNum.singleQuotesAmount
     ) {
       return null;
     }
-    // 判断是否是在函数的传参之中
-    let atend = searchDown(doc, startLine + 1, index);
-    if (atend) return null;
+    // return { name: JSON.stringify(codeNum), attrs: {}, index };
     return { name, attrs: {}, index };
   }
 }
 function searchUp(doc: TextDocument, lineNum: number, index: number) {
+  const startLine = lineNum;
   let name = "";
   while (lineNum >= 0 && !name) {
     let text = doc.lineAt(lineNum).text.trim();
-    let str = doc
-      .lineAt(lineNum)
-      .text.slice(0, index)
-      .trim();
     if (text) {
-      if (SINGLE_LINE_REGEXP.test(text)) {
-        name = RegExp.$1;
-      } else {
-        codeAnalysis("{", "}", text, "codeBlock", true);
+      codeAnalysis("{", "}", text, "codeBlock", true);
+      if (lineNum == startLine) {
+        let str = doc
+          .lineAt(lineNum)
+          .text.slice(0, index)
+          .trim();
         codeQuotes('"', str, "quotes");
         codeQuotes("'", str, "singleQuotes");
         codeQuotes("]", str, "brackets", "[");
+      } else {
+        codeQuotes('"', text, "quotes");
+        codeQuotes("'", text, "singleQuotes");
+        codeQuotes("]", text, "brackets", "[");
+      }
+      if (SINGLE_LINE_REGEXP.test(text) && codeNum.codeBlockAmount == 1) {
+        name = RegExp.$1;
       }
     }
     lineNum--;
@@ -133,8 +156,7 @@ function searchDown(doc: TextDocument, lineNum: number, index: number) {
       codeAnalysis("{", "}", text, "codeBlock", false);
       if (END_REGEXP.test(text) && codeNum.codeBlockAmount === 0) {
         atEnd = true;
-      }
-      if (/\<\/script\>/.test(text)) {
+      } else if (/<\/script\>/.test(text)) {
         atEnd = false;
       }
     }
@@ -169,51 +191,62 @@ function codeAnalysis(
   let ns = `${name}Start`;
   let ne = `${name}End`;
   let na = `${name}Amount`;
+  let arr1;
+  let arr2;
   if (start) {
-    // 如果是开始行
-    if (regex2.test(text)) {
-      codeNum[ne]++;
+    if ((arr2 = regex2[Symbol.matchAll](text)) !== null) {
+      Array.from(arr2, (x) => x[0]).forEach((f) => {
+        codeNum[ne]++;
+      });
     }
-    if (regex1.test(text)) {
-      codeNum[ns]++;
-      codeNum[na] = codeNum[ne] - codeNum[ns];
+    if ((arr1 = regex1[Symbol.matchAll](text)) !== null) {
+      Array.from(arr1, (x) => x[0]).forEach((f) => {
+        codeNum[ns]++;
+      });
     }
   } else {
     // 如果是结束行
-    if (regex1.test(text)) {
-      codeNum[ns]++;
+    if ((arr1 = regex1[Symbol.matchAll](text)) !== null) {
+      Array.from(arr1, (x) => x[0]).forEach((f) => {
+        codeNum[ns]++;
+      });
     }
-    if (regex2.test(text)) {
-      codeNum[ne]++;
-      codeNum[na] = codeNum[ns] - codeNum[ne];
+    if ((arr2 = regex2[Symbol.matchAll](text)) !== null) {
+      Array.from(arr2, (x) => x[0]).forEach((f) => {
+        codeNum[ne]++;
+      });
     }
   }
+  codeNum[na] = codeNum[ns] - codeNum[ne];
 }
 /**
  * 计算向上取到的空格
- * @param {string} REP1
- * @param {string} str
- * @param {string} name
- * @param {string} REP2
- * @return {*}
  */
 function codeQuotes(REP1: string, str: string, name: string, REP2?: string) {
   var regex1 = new RegExp(REP1, "g");
   let ns = `${name}Start`;
+  let ne = `${name}End`;
   let na = `${name}Amount`;
   let arr1;
+  let arr2;
   if (REP2) {
-    if (/\]/.test(str)) {
-      codeNum.bracketsEnd++;
+    if ((arr1 = /\]/[Symbol.matchAll](str)) !== null) {
+      Array.from(arr1, (x) => x[0]).forEach((f) => {
+        codeNum[ne]++;
+      });
     }
-    if (/\[/.test(str)) {
-      codeNum.bracketsStart++;
+    if ((arr2 = /\[/[Symbol.matchAll](str)) !== null) {
+      Array.from(arr2, (x) => x[0]).forEach((f) => {
+        codeNum[ns]++;
+      });
     }
-    codeNum.bracketsAmount = codeNum.bracketsEnd - codeNum.bracketsStart;
-  } else if ((arr1 = regex1[Symbol.matchAll](str)) !== null) {
-    Array.from(arr1, (x) => x[0]).forEach((f) => {
-      codeNum[ns]++;
-    });
-    codeNum[na] = codeNum[ns] % 2;
+    codeNum[na] = codeNum[ns] - codeNum[ne];
+  } else {
+    if ((arr1 = regex1[Symbol.matchAll](str)) !== null) {
+      Array.from(arr1, (x) => x[0]).forEach((f) => {
+        codeNum[ns]++;
+      });
+      codeNum[na] = codeNum[ns] % 2;
+    }
   }
 }

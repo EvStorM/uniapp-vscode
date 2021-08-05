@@ -1,5 +1,10 @@
 <template lang="html">
-  <view hover-class="none" hover-stop-propagation="false"> </view>
+  <view
+    class=" ev-falign-self-c"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+  </view>
   <u-icon></u-icon>
 </template>
 <script>
@@ -11,10 +16,7 @@ export default {
     };
   },
   methods: {
-    test() {
-      uni.getBLEDeviceServices({});
-      uni.navigateTo({});
-    },
+    test() {},
   },
 };
 </script>
