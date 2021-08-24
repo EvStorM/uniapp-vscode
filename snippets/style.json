@@ -1,0 +1,20 @@
+{
+    "if 样式条件编译": {
+        "prefix": "#ifdef",
+        "body": [
+            "/* #ifdef ${1|APP-PLUS,MP,MP-ALIPAY,MP-BAIDU,MP-WEIXIN,MP-QQ,H5|} */",
+            "$0",
+            "/* #endif */"
+        ],
+        "scope": "css,sass,scss"
+    },
+    "ifn 样式条件编译": {
+        "prefix": "#ifndef",
+        "body": [
+            "/* #ifndef ${1|APP-PLUS,MP,MP-ALIPAY,MP-BAIDU,MP-WEIXIN,MP-QQ,H5|} */",
+            "$0",
+            "/* #endif */"
+        ],
+        "scope": "css,sass,scss"
+    }
+}

@@ -206,32 +206,47 @@
   },
   "getCurrentPages": {
     "prefix": "getCurrentPages",
-    "body": ["${1:let curPages = } getCurrentPages();", "${2}"],
+    "body": [
+      "${1:let curPages = } getCurrentPages();",
+      "${2}"
+    ],
     "description": "获取当前页面栈"
   },
   "page-function": {
     "prefix": "page-function",
-    "body": ["${1:functionName}: function () {", "\t${2}", "}"],
+    "body": [
+      "${1:functionName}: function () {",
+      "\t${2}",
+      "}"
+    ],
     "description": "获取小程序实例"
   },
   "getApp": {
     "prefix": "getApp",
-    "body": ["${1:const app = } getApp();"],
+    "body": [
+      "${1:const app = } getApp();"
+    ],
     "description": "获取小程序实例"
   },
   "wxRequire": {
     "prefix": "require",
-    "body": ["const ${1:module}  = require(\"${2}\");"],
+    "body": [
+      "const ${1:module}  = require(\"${2}\");"
+    ],
     "description": "require加载模块"
   },
   "wxImportAll": {
     "prefix": "import-all",
-    "body": ["import * as ${1:module} from \"${2}\";"],
+    "body": [
+      "import * as ${1:module} from \"${2}\";"
+    ],
     "description": "import加载所有"
   },
   "wxImportObject": {
     "prefix": "import-object",
-    "body": ["import {${1}} from \"${2}\";"],
+    "body": [
+      "import {${1}} from \"${2}\";"
+    ],
     "description": "import加载对象"
   },
   "uni.request": {
@@ -272,12 +287,18 @@
   },
   "upTask.onProgressUpdate": {
     "prefix": "upTask-onProgressUpdate",
-    "body": ["upTask.onProgressUpdate((result)=>{", "\t\t${1}", "\t});"],
+    "body": [
+      "upTask.onProgressUpdate((result)=>{",
+      "\t\t${1}",
+      "\t});"
+    ],
     "description": "监听上传进度变化事件。"
   },
   "upTask.abort": {
     "prefix": "upTask-abort",
-    "body": ["upTask.abort();"],
+    "body": [
+      "upTask.abort();"
+    ],
     "description": "中断上传任务。"
   },
   "uni.downloadFile": {
@@ -296,12 +317,18 @@
   },
   "downTask.onProgressUpdate": {
     "prefix": "downTask-onProgressUpdate",
-    "body": ["downTask.onProgressUpdate((result)=>{", "\t\t${1}", "\t});"],
+    "body": [
+      "downTask.onProgressUpdate((result)=>{",
+      "\t\t${1}",
+      "\t});"
+    ],
     "description": "监听下载进度变化事件。"
   },
   "downTask.abort": {
     "prefix": "downTask-abort",
-    "body": ["downTask.abort();"],
+    "body": [
+      "downTask.abort();"
+    ],
     "description": "中断下载任务。"
   },
   "uni.connectSocket": {
@@ -323,12 +350,20 @@
   },
   "uni.onSocketOpen": {
     "prefix": "uni-onSocketOpen",
-    "body": ["uni.onSocketOpen(${1:result} => {", "\t${2}", "});"],
+    "body": [
+      "uni.onSocketOpen(${1:result} => {",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听WebSocket连接打开事件。"
   },
   "uni.onSocketError": {
     "prefix": "uni-onSocketError",
-    "body": ["uni.onSocketError(${1:result} => {", "\t${2}", "});"],
+    "body": [
+      "uni.onSocketError(${1:result} => {",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听WebSocket错误。"
   },
   "uni.sendSocketMessage": {
@@ -347,7 +382,9 @@
   },
   "uni.onSocketMessage": {
     "prefix": "uni-onSocketMessage",
-    "body": ["uni.onSocketMessage((${1:result})=>{${2}});"],
+    "body": [
+      "uni.onSocketMessage((${1:result})=>{${2}});"
+    ],
     "description": "监听WebSocket接受到服务器的消息事件。"
   },
   "uni.closeSocket": {
@@ -367,7 +404,11 @@
   },
   "uni.onSocketClose": {
     "prefix": "uni-onSocketClose",
-    "body": ["uni.onSocketClose((${1:result})=>{", "\t${2}", "});"],
+    "body": [
+      "uni.onSocketClose((${1:result})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听WebSocket关闭。"
   },
   "sockTask.send": {
@@ -401,22 +442,38 @@
   },
   "sockTask.onOpen": {
     "prefix": "sockTask-onOpen",
-    "body": ["sockTask.onOpen(${1:result} => {", "\t${2}", "});"],
+    "body": [
+      "sockTask.onOpen(${1:result} => {",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听WebSocket连接打开事件。"
   },
   "sockTask.onClose": {
     "prefix": "sockTask-onClose",
-    "body": ["sockTask.onClose(${1:result} => {", "\t${2}", "});"],
+    "body": [
+      "sockTask.onClose(${1:result} => {",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听 WebSocket 连接关闭事件。"
   },
   "sockTask.onError": {
     "prefix": "sockTask-onError",
-    "body": ["sockTask.onError(${1:result} => {", "\t${2}", "});"],
+    "body": [
+      "sockTask.onError(${1:result} => {",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听 WebSocket 错误。"
   },
   "sockTask.onMessage": {
     "prefix": "sockTask-onMessage",
-    "body": ["sockTask.onMessage(${1:result} => {", "\t${2}", "});"],
+    "body": [
+      "sockTask.onMessage(${1:result} => {",
+      "\t${2}",
+      "});"
+    ],
     "description": "监听WebSocket接受到服务器的消息事件。"
   },
   "uni.chooseImage": {
@@ -493,12 +550,16 @@
   },
   "uni.stopRecord": {
     "prefix": "uni-stopRecord",
-    "body": ["uni.stopRecord();"],
+    "body": [
+      "uni.stopRecord();"
+    ],
     "description": "停止录音。1.6.0 起不再维护"
   },
   "uni.getRecorderManager": {
     "prefix": "uni-getRecorderManager",
-    "body": ["${1:let recordManager = }uni.getRecorderManager();"],
+    "body": [
+      "${1:let recordManager = }uni.getRecorderManager();"
+    ],
     "description": "获取全局唯一的录音管理器recorderManager。"
   },
   "recordManager.start": {
@@ -515,42 +576,68 @@
   },
   "recordManager.pause": {
     "prefix": "recordManager-pause",
-    "body": ["recordManager.pause();"],
+    "body": [
+      "recordManager.pause();"
+    ],
     "description": "暂停录音"
   },
   "recordManager.resume": {
     "prefix": "recordManager-resume",
-    "body": ["recordManager.resume();"],
+    "body": [
+      "recordManager.resume();"
+    ],
     "description": "恢复录音"
   },
   "recordManager.stop": {
     "prefix": "recordManager-stop",
-    "body": ["recordManager.stop();"],
+    "body": [
+      "recordManager.stop();"
+    ],
     "description": "停止录音"
   },
   "recordManager.onStart": {
     "prefix": "recordManager-onStart",
-    "body": ["recordManager.onStart((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "recordManager.onStart((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "录音开始事件"
   },
   "recordManager.onPause": {
     "prefix": "recordManager-onPause",
-    "body": ["recordManager.onPause((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "recordManager.onPause((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "录音暂停事件"
   },
   "recordManager.onStop": {
     "prefix": "recordManager-onStop",
-    "body": ["recordManager.onStop((${1:result})=>{", "\t${2}", "});"],
+    "body": [
+      "recordManager.onStop((${1:result})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "录音停止事件，会回调文件地址"
   },
   "recordManager.onFrameRecorded": {
     "prefix": "recordManager-onFrameRecorded",
-    "body": ["recordManager.onFrameRecorded((${1:result})=>{", "\t${2}", "});"],
+    "body": [
+      "recordManager.onFrameRecorded((${1:result})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "已录制完指定帧大小的文件，会回调录音分片结果数据"
   },
   "recordManager.onError": {
     "prefix": "recordManager-onError",
-    "body": ["recordManager.onError((${1:errMsg})=>{", "\t${2}", "});"],
+    "body": [
+      "recordManager.onError((${1:errMsg})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "录音错误事件, 会回调错误信息"
   },
   "uni.playVoice": {
@@ -570,12 +657,16 @@
   },
   "uni.pauseVoice": {
     "prefix": "uni-pauseVoice",
-    "body": ["uni.pauseVoice();"],
+    "body": [
+      "uni.pauseVoice();"
+    ],
     "description": "暂停正在播放的语音。1.6.0 起不再维护"
   },
   "uni.stopVoice": {
     "prefix": "uni-stopVoice",
-    "body": ["uni.stopVoice();"],
+    "body": [
+      "uni.stopVoice();"
+    ],
     "description": "结束播放语音。1.6.0 起不再维护"
   },
   "uni.getBackgroundAudioPlayerState": {
@@ -609,7 +700,9 @@
   },
   "uni.pauseBackgroundAudio": {
     "prefix": "uni-pauseBackgroundAudio",
-    "body": ["uni.playBackgroundAudio();"],
+    "body": [
+      "uni.playBackgroundAudio();"
+    ],
     "description": "暂停播放音乐。1.2.0 起不再维护"
   },
   "uni.seekBackgroundAudio": {
@@ -628,22 +721,30 @@
   },
   "uni.stopBackgroundAudio": {
     "prefix": "uni-stopBackgroundAudio",
-    "body": ["uni.stopBackgroundAudio();"],
+    "body": [
+      "uni.stopBackgroundAudio();"
+    ],
     "description": "停止播放音乐。1.2.0 起不再维护"
   },
   "uni.onBackgroundAudioPlay": {
     "prefix": "uni-onBackgroundAudioPlay",
-    "body": ["uni.onBackgroundAudioPlay((${1:result})=>{${2}});"],
+    "body": [
+      "uni.onBackgroundAudioPlay((${1:result})=>{${2}});"
+    ],
     "description": "监听音乐播放。1.2.0 起不再维护"
   },
   "uni.onBackgroundAudioPause": {
     "prefix": "uni-onBackgroundAudioPause",
-    "body": ["uni.onBackgroundAudioPause((${1:result})=>{${2}});"],
+    "body": [
+      "uni.onBackgroundAudioPause((${1:result})=>{${2}});"
+    ],
     "description": "监听音乐暂停。1.2.0 起不再维护"
   },
   "uni.onBackgroundAudioStop": {
     "prefix": "uni-onBackgroundAudioStop",
-    "body": ["uni.onBackgroundAudioStop((${1:result})=>{${2}});"],
+    "body": [
+      "uni.onBackgroundAudioStop((${1:result})=>{${2}});"
+    ],
     "description": "监听音乐停止。1.2.0 起不再维护"
   },
   "uni.getBackgroundAudioManager": {
@@ -657,102 +758,162 @@
   },
   "backAudioManager.src": {
     "prefix": "backAudioManager-src",
-    "body": ["backAudioManager.src = ${1};"],
+    "body": [
+      "backAudioManager.src = ${1};"
+    ],
     "description": "音频的数据源，默认为空字符串，当设置了新的 src 时，会自动开始播放 ，目前支持的格式有 m4a, aac, mp3, wav。"
   },
   "backAudioManager.play": {
     "prefix": "backAudioManager-play",
-    "body": ["backAudioManager.play();"],
+    "body": [
+      "backAudioManager.play();"
+    ],
     "description": "播放"
   },
   "backAudioManager.pause": {
     "prefix": "backAudioManager-pause",
-    "body": ["backAudioManager.pause();"],
+    "body": [
+      "backAudioManager.pause();"
+    ],
     "description": "暂停"
   },
   "backAudioManager.stop": {
     "prefix": "backAudioManager-stop",
-    "body": ["backAudioManager.stop();"],
+    "body": [
+      "backAudioManager.stop();"
+    ],
     "description": "停止"
   },
   "backAudioManager.seek": {
     "prefix": "backAudioManager-seek",
-    "body": ["backAudioManager.seek(${1});"],
+    "body": [
+      "backAudioManager.seek(${1});"
+    ],
     "description": "跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度。"
   },
   "backAudioManager.onCanplay": {
     "prefix": "backAudioManager-onCanplay",
-    "body": ["backAudioManager.onCanplay(${1:()=>{", "\t\t${2}", "\t}});"],
+    "body": [
+      "backAudioManager.onCanplay(${1:()=>{",
+      "\t\t${2}",
+      "\t}});"
+    ],
     "description": "背景音频进入可以播放状态，但不保证后面可以流畅播放"
   },
   "backAudioManager.onPlay": {
     "prefix": "backAudioManager-onPlay",
-    "body": ["backAudioManager.onPlay(()=>{", "\t${1}", "});"],
+    "body": [
+      "backAudioManager.onPlay(()=>{",
+      "\t${1}",
+      "});"
+    ],
     "description": "背景音频播放事件"
   },
   "backAudioManager.onPause": {
     "prefix": "backAudioManager-onPause",
-    "body": ["backAudioManager.onPause(()=>{", "\t${1}", "});"],
+    "body": [
+      "backAudioManager.onPause(()=>{",
+      "\t${1}",
+      "});"
+    ],
     "description": "背景音频暂停事件"
   },
   "backAudioManager.onStop": {
     "prefix": "backAudioManager-onStop",
-    "body": ["backAudioManager.onStop(()=>{", "\t${1}", "});"],
+    "body": [
+      "backAudioManager.onStop(()=>{",
+      "\t${1}",
+      "});"
+    ],
     "description": "背景音频停止事件"
   },
   "backAudioManager.onEnded": {
     "prefix": "backAudioManager-onEnded",
-    "body": ["backAudioManager.onEnded(()=>{", "\t${1}", "});"],
+    "body": [
+      "backAudioManager.onEnded(()=>{",
+      "\t${1}",
+      "});"
+    ],
     "description": "背景音频自然播放结束事件"
   },
   "backAudioManager.onTimeUpdate": {
     "prefix": "backAudioManager-onTimeUpdate",
-    "body": ["backAudioManager.onTimeUpdate((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "backAudioManager.onTimeUpdate((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "背景音频播放进度更新事件"
   },
   "backAudioManager.onPrev": {
     "prefix": "backAudioManager-onPrev",
-    "body": ["backAudioManager.onPrev((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "backAudioManager.onPrev((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "用户在系统音乐播放面板点击上一曲事件（iOS only）"
   },
   "backAudioManager.onNext": {
     "prefix": "backAudioManager-onNext",
-    "body": ["backAudioManager.onNext((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "backAudioManager.onNext((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "用户在系统音乐播放面板点击下一曲事件（iOS only）"
   },
   "backAudioManager.onError": {
     "prefix": "backAudioManager-onError",
-    "body": ["backAudioManager.onError((${1:errMsg})=>{", "\t${2}", "});"],
+    "body": [
+      "backAudioManager.onError((${1:errMsg})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "背景音频播放错误事件"
   },
   "backAudioManager.onWaiting": {
     "prefix": "backAudioManager-onWaiting",
-    "body": ["backAudioManager.onWaiting((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "backAudioManager.onWaiting((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频加载中事件，当音频因为数据不足，需要停下来加载时会触发"
   },
   "uni.createAudioContext": {
     "prefix": "uni-createAudioContext",
-    "body": ["${1:let audioContext = }uni.createAudioContext(${2}, this);"],
+    "body": [
+      "${1:let audioContext = }uni.createAudioContext(${2}, this);"
+    ],
     "description": "创建并返回audio上下文audioContext对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内<audio/>组件。1.6.0 起不再维护"
   },
   "audioContext.setSrc": {
     "prefix": "audioContext-setSrc",
-    "body": ["audioContext.setSrc('${1}');"],
+    "body": [
+      "audioContext.setSrc('${1}');"
+    ],
     "description": "设置音频的地址。1.6.0 起不再维护"
   },
   "audioContext.play": {
     "prefix": "audioContext-play",
-    "body": ["audioContext.play();"],
+    "body": [
+      "audioContext.play();"
+    ],
     "description": "播放。1.6.0 起不再维护"
   },
   "audioContext.pause": {
     "prefix": "audioContext-pause",
-    "body": ["audioContext.pause();"],
+    "body": [
+      "audioContext.pause();"
+    ],
     "description": "暂停。1.6.0 起不再维护"
   },
   "audioContext.seek": {
     "prefix": "audioContext-seek",
-    "body": ["audioContext.seek(${1});"],
+    "body": [
+      "audioContext.seek(${1});"
+    ],
     "description": "跳转到指定位置，单位 s。1.6.0 起不再维护"
   },
   "uni.createInnerAudioContext": {
@@ -766,123 +927,206 @@
   },
   "innerAudioContext.play": {
     "prefix": "innerAudioContext-play",
-    "body": ["innerAudioContext.play();"],
+    "body": [
+      "innerAudioContext.play();"
+    ],
     "description": "播放"
   },
   "innerAudioContext.pause": {
     "prefix": "innerAudioContext-pause",
-    "body": ["innerAudioContext.pause();"],
+    "body": [
+      "innerAudioContext.pause();"
+    ],
     "description": "暂停"
   },
   "innerAudioContext.stop": {
     "prefix": "innerAudioContext-stop",
-    "body": ["innerAudioContext.stop();"],
+    "body": [
+      "innerAudioContext.stop();"
+    ],
     "description": "停止"
   },
   "innerAudioContext.seek": {
     "prefix": "innerAudioContext-seek",
-    "body": ["innerAudioContext.seek(${1});"],
+    "body": [
+      "innerAudioContext.seek(${1});"
+    ],
     "description": "跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度"
   },
   "innerAudioContext.destroy": {
     "prefix": "innerAudioContext-destroy",
-    "body": ["innerAudioContext.destroy();"],
+    "body": [
+      "innerAudioContext.destroy();"
+    ],
     "description": "销毁当前实例"
   },
   "innerAudioContext.onCanplay": {
     "prefix": "innerAudioContext-onCanplay",
-    "body": ["innerAudioContext.onCanplay(()=>{${1}});"],
+    "body": [
+      "innerAudioContext.onCanplay(()=>{${1}});"
+    ],
     "description": "音频进入可以播放状态，但不保证后面可以流畅播放"
   },
   "innerAudioContext.onPlay": {
     "prefix": "innerAudioContext-onPlay",
-    "body": ["innerAudioContext.onPlay((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onPlay((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频播放事件"
   },
   "innerAudioContext.onPause": {
     "prefix": "innerAudioContext-onPause",
-    "body": ["innerAudioContext.onPause((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onPause((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频暂停播放事件"
   },
   "innerAudioContext.onStop": {
     "prefix": "innerAudioContext-onStop",
-    "body": ["innerAudioContext.onStop((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onStop((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频停止播放事件"
   },
   "innerAudioContext.onEnded": {
     "prefix": "innerAudioContext-onEnded",
-    "body": ["innerAudioContext.onEnded((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onEnded((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频自然播放结束事件"
   },
   "innerAudioContext.onTimeUpdate": {
     "prefix": "innerAudioContext-onTimeUpdate",
-    "body": ["innerAudioContext.onTimeUpdate((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onTimeUpdate((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频播放进度更新事件"
   },
   "innerAudioContext.onError": {
     "prefix": "innerAudioContext-onError",
-    "body": ["innerAudioContext.onError((${1:errMsg})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onError((${1:errMsg})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频播放错误事件"
   },
   "innerAudioContext.onWaiting": {
     "prefix": "innerAudioContext-onWaiting",
-    "body": ["innerAudioContext.onWaiting((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onWaiting((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频加载中事件，当音频因为数据不足，需要停下来加载时会触发"
   },
   "innerAudioContext.onSeeking": {
     "prefix": "innerAudioContext-onSeeking",
-    "body": ["innerAudioContext.onSeeking((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onSeeking((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频进行seek操作事件"
   },
   "innerAudioContext.onSeeked": {
     "prefix": "innerAudioContext-onSeeked",
-    "body": ["innerAudioContext.onSeeked((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.onSeeked((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "音频完成seek操作事件"
   },
-
   "innerAudioContext.offCanplay": {
     "prefix": "innerAudioContext-offCanplay",
-    "body": ["innerAudioContext.offCanplay((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offCanplay((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onCanplay事件"
   },
   "innerAudioContext.offPlay": {
     "prefix": "innerAudioContext-offPlay",
-    "body": ["innerAudioContext.offPlay((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offPlay((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onPlay事件"
   },
   "innerAudioContext.offStop": {
     "prefix": "innerAudioContext-offStop",
-    "body": ["innerAudioContext.offStop((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offStop((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onStop事件"
   },
   "innerAudioContext.offEnded": {
     "prefix": "innerAudioContext-offEnded",
-    "body": ["innerAudioContext.offEnded((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offEnded((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onEnded事件"
   },
   "innerAudioContext.offTimeUpdate": {
     "prefix": "innerAudioContext-offTimeUpdate",
-    "body": ["innerAudioContext.offTimeUpdate((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offTimeUpdate((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onTimeUpdate事件"
   },
   "innerAudioContext.offError": {
     "prefix": "innerAudioContext-offError",
-    "body": ["innerAudioContext.offError((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offError((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onError事件"
   },
   "innerAudioContext.offWaiting": {
     "prefix": "innerAudioContext-offWaiting",
-    "body": ["innerAudioContext.offWaiting((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offWaiting((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onWaiting事件"
   },
   "innerAudioContext.offSeeking": {
     "prefix": "innerAudioContext-offSeeking",
-    "body": ["innerAudioContext.offSeeking((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offSeeking((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onSeeking事件"
   },
   "innerAudioContext.offSeeked": {
     "prefix": "innerAudioContext-offSeeked",
-    "body": ["innerAudioContext.offSeeked((${1})=>{", "\t${2}", "});"],
+    "body": [
+      "innerAudioContext.offSeeked((${1})=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "取消监听onSeeked事件"
   },
   "uni.getAvailableAudioSources": {
@@ -898,7 +1142,6 @@
     ],
     "description": "获取当前支持的音频输入源"
   },
-
   "uni.chooseVideo": {
     "prefix": "uni-chooseVideo",
     "body": [
@@ -929,7 +1172,6 @@
     ],
     "description": "保存视频到系统相册。需要用户授权 scope.writePhotosAlbum"
   },
-
   "uni.createVideoContext": {
     "prefix": "uni-createVideoContext",
     "body": [
@@ -939,22 +1181,30 @@
   },
   "videoContext.play": {
     "prefix": "videoContext-play",
-    "body": ["videoContext.play();"],
+    "body": [
+      "videoContext.play();"
+    ],
     "description": "播放"
   },
   "videoContext.pause": {
     "prefix": "videoContext-pause",
-    "body": ["videoContext.pause();"],
+    "body": [
+      "videoContext.pause();"
+    ],
     "description": "暂停"
   },
   "videoContext.stop": {
     "prefix": "videoContext-stop",
-    "body": ["videoContext.stop();"],
+    "body": [
+      "videoContext.stop();"
+    ],
     "description": "停止"
   },
   "videoContext.seek": {
     "prefix": "videoContext-seek",
-    "body": ["videoContext.seek(${1});"],
+    "body": [
+      "videoContext.seek(${1});"
+    ],
     "description": "跳转到指定位置，单位 s"
   },
   "videoContext.sendDanmu": {
@@ -969,32 +1219,46 @@
   },
   "videoContext.playbackRate": {
     "prefix": "videoContext-playbackRate",
-    "body": ["videoContext.playbackRate(${1});"],
+    "body": [
+      "videoContext.playbackRate(${1});"
+    ],
     "description": "设置倍速播放，支持的倍率有 0.5/0.8/1.0/1.25/1.5"
   },
   "videoContext.requestFullScreen": {
     "prefix": "videoContext-requestFullScreen",
-    "body": ["videoContext.requestFullScreen({", "\tdirection: ${1:0}", "});"],
+    "body": [
+      "videoContext.requestFullScreen({",
+      "\tdirection: ${1:0}",
+      "});"
+    ],
     "description": "进入全屏，可传入{direction}参数, 有效值为 0, 90,-90"
   },
   "videoContext.exitFullScreen": {
     "prefix": "videoContext-exitFullScreen",
-    "body": ["videoContext.exitFullScreen();"],
+    "body": [
+      "videoContext.exitFullScreen();"
+    ],
     "description": "退出全屏"
   },
   "videoContext.showStatusBar": {
     "prefix": "videoContext-showStatusBar",
-    "body": ["videoContext.showStatusBar();"],
+    "body": [
+      "videoContext.showStatusBar();"
+    ],
     "description": "显示状态栏，仅在iOS全屏下有效"
   },
   "videoContext.hideStatusBar": {
     "prefix": "videoContext-hideStatusBar",
-    "body": ["videoContext.hideStatusBar();"],
+    "body": [
+      "videoContext.hideStatusBar();"
+    ],
     "description": "隐藏状态栏，仅在iOS全屏下有效"
   },
   "uni.createCameraContext": {
     "prefix": "uni-createCameraContext",
-    "body": ["${1:let cameraContext = }uni.createCameraContext(${2:this});"],
+    "body": [
+      "${1:let cameraContext = }uni.createCameraContext(${2:this});"
+    ],
     "description": "创建并返回 camera 上下文 cameraContext 对象，cameraContext 与页面的 camera 组件绑定，一个页面只能有一个camera，通过它可以操作对应的 <camera/> 组件。1.6.0 开始支持"
   },
   "cameraContext.takePhoto": {
@@ -1040,7 +1304,6 @@
     ],
     "description": "结束录像，成功则返回封面与视频"
   },
-
   "uni.createLivePlayerContext": {
     "prefix": "uni-createLivePlayerContext",
     "body": [
@@ -1345,7 +1608,9 @@
   },
   "uni.setStorageSync": {
     "prefix": "uni-setStorageSync",
-    "body": ["uni.setStorageSync(${1:key}, ${2:data});"],
+    "body": [
+      "uni.setStorageSync(${1:key}, ${2:data});"
+    ],
     "description": "将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。"
   },
   "uni.getStorage": {
@@ -1364,7 +1629,9 @@
   },
   "uni.getStorageSync": {
     "prefix": "uni-getStorageSync",
-    "body": ["uni.getStorageSync(${1:key});"],
+    "body": [
+      "uni.getStorageSync(${1:key});"
+    ],
     "description": "从本地缓存中同步获取指定 key 对应的内容。"
   },
   "uni.getStorageInfo": {
@@ -1382,7 +1649,9 @@
   },
   "uni.getStorageInfoSync": {
     "prefix": "uni-getStorageInfoSync",
-    "body": ["${1:let storageInfo = }uni.getStorageInfoSync();"],
+    "body": [
+      "${1:let storageInfo = }uni.getStorageInfoSync();"
+    ],
     "description": "同步获取当前storage的相关信息"
   },
   "uni.removeStorage": {
@@ -1401,17 +1670,23 @@
   },
   "uni.removeStorageSync": {
     "prefix": "uni-removeStorageSync",
-    "body": ["uni.removeStorageSync(${1:key});"],
+    "body": [
+      "uni.removeStorageSync(${1:key});"
+    ],
     "description": "从本地缓存中同步移除指定 key。"
   },
   "uni.clearStorage": {
     "prefix": "uni-clearStorage",
-    "body": ["uni.clearStorage();"],
+    "body": [
+      "uni.clearStorage();"
+    ],
     "description": "异步清除本地数据缓存"
   },
   "uni.clearStorageSync": {
     "prefix": "uni-clearStorageSync",
-    "body": ["uni.clearStorageSync();"],
+    "body": [
+      "uni.clearStorageSync();"
+    ],
     "description": "同步清除本地数据缓存"
   },
   "uni.getLocation": {
@@ -1482,7 +1757,9 @@
   },
   "mapContext.moveToLocation": {
     "prefix": "mapContext-moveToLocation",
-    "body": ["mapContext.moveToLocation();"],
+    "body": [
+      "mapContext.moveToLocation();"
+    ],
     "description": "将地图中心移动到当前定位点，需要配合map组件的show-location使用"
   },
   "mapContext.translateMarker": {
@@ -1559,17 +1836,25 @@
   },
   "uni.getSystemInfoSync": {
     "prefix": "uni-getSystemInfoSync",
-    "body": ["${let systemInfo = }uni.getSystemInfoSync();"],
+    "body": [
+      "${let systemInfo = }uni.getSystemInfoSync();"
+    ],
     "description": "获取系统信息同步接口"
   },
   "uni.canIUse": {
     "prefix": "uni-canIUse",
-    "body": ["uni.canIUse(${1});"],
+    "body": [
+      "uni.canIUse(${1});"
+    ],
     "description": "判断小程序的API，回调，参数，组件等是否在当前版本可用。"
   },
   "uni.onMemoryWarning": {
     "prefix": "uni-onMemoryWarning",
-    "body": ["uni.onMemoryWarning((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onMemoryWarning((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听内存不足的告警事件，Android下有告警等级划分，只有LOW和CRITICAL会回调开发者；iOS无等级划分"
   },
   "uni.getNetworkType": {
@@ -1587,12 +1872,20 @@
   },
   "uni.onNetworkStatusChange": {
     "prefix": "uni-onNetworkStatusChange",
-    "body": ["uni.onNetworkStatusChange((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onNetworkStatusChange((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听网络状态变化。"
   },
   "uni.onAccelerometerChange": {
     "prefix": "uni-onAccelerometerChange",
-    "body": ["uni.onAccelerometerChange((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onAccelerometerChange((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 uni.stopAccelerometer 停止监听。"
   },
   "uni.startAccelerometer": {
@@ -1624,7 +1917,11 @@
   },
   "uni.onCompassChange": {
     "prefix": "uni-onCompassChange",
-    "body": ["uni.onCompassChange((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onCompassChange((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听罗盘数据，频率：5次/秒，接口调用后会自动开始监听，可使用uni.stopCompass停止监听。"
   },
   "uni.startCompass": {
@@ -1801,7 +2098,11 @@
   },
   "uni.onBluetoothDeviceFound": {
     "prefix": "uni-onBluetoothDeviceFound",
-    "body": ["uni.onBluetoothDeviceFound((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onBluetoothDeviceFound((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听寻找到新设备的事件"
   },
   "uni.getConnectedBluetoothDevices": {
@@ -1848,7 +2149,11 @@
   },
   "uni.onBLEConnectionStateChange": {
     "prefix": "uni-onBLEConnectionStateChange",
-    "body": ["uni.onBLEConnectionStateChange((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onBLEConnectionStateChange((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听低功耗蓝牙连接状态的改变事件，包括开发者主动连接或断开连接，设备丢失，连接异常断开等等"
   },
   "uni.getBLEDeviceServices": {
@@ -1982,12 +2287,20 @@
   },
   "uni.onBeaconUpdate": {
     "prefix": "uni-onBeaconUpdate",
-    "body": ["uni.onBeaconUpdate((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onBeaconUpdate((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听 iBeacon 设备的更新事件"
   },
   "uni.onBeaconServiceChange": {
     "prefix": "uni-onBeaconServiceChange",
-    "body": ["uni.onBeaconServiceChange((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onBeaconServiceChange((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听 iBeacon 服务的状态变化"
   },
   "uni.setScreenBrightness": {
@@ -2059,7 +2372,11 @@
   },
   "uni.onUserCaptureScreen": {
     "prefix": "uni-onUserCaptureScreen",
-    "body": ["uni.onUserCaptureScreen((result)=>{", "\t${1}", "});"],
+    "body": [
+      "uni.onUserCaptureScreen((result)=>{",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听用户主动截屏事件，用户使用系统截屏按键截屏时触发此事件"
   },
   "uni.addPhoneContact": {
@@ -2125,7 +2442,11 @@
   },
   "uni.onHCEMessage": {
     "prefix": "uni-onHCEMessage",
-    "body": ["uni.onHCEMessage((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onHCEMessage((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听 NFC 设备的消息回调，并在回调中处理。"
   },
   "uni.sendHCEMessage": {
@@ -2199,7 +2520,11 @@
   },
   "uni.onGetWifiList": {
     "prefix": "uni-onGetWifiList",
-    "body": ["uni.onGetWifiList((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onGetWifiList((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听在获取到Wi-Fi列表数据时的事件，在回调中将返回wifiList。"
   },
   "uni.setWifiList": {
@@ -2224,7 +2549,11 @@
   },
   "uni.onWifiConnected": {
     "prefix": "uni-onWifiConnected",
-    "body": ["uni.onWifiConnected((result) => {", "\t${1}", "});"],
+    "body": [
+      "uni.onWifiConnected((result) => {",
+      "\t${1}",
+      "});"
+    ],
     "description": "监听连接上Wi-Fi的事件。"
   },
   "uni.getConnectedWifi": {
@@ -2275,12 +2604,16 @@
   },
   "uni.hideToast": {
     "prefix": "uni-hideToast",
-    "body": ["uni.hideToast();"],
+    "body": [
+      "uni.hideToast();"
+    ],
     "description": "隐藏消息提示框"
   },
   "uni.hideLoading": {
     "prefix": "uni-hideLoading",
-    "body": ["uni.hideLoading();"],
+    "body": [
+      "uni.hideLoading();"
+    ],
     "description": "隐藏loading提示框"
   },
   "uni.showModal": {
@@ -2322,12 +2655,20 @@
   },
   "uni.onWindowResize": {
     "prefix": "uni-onWindowResize",
-    "body": ["uni.onWindowResize((result)=>{", "\t\t${1}", "\t});"],
+    "body": [
+      "uni.onWindowResize((result)=>{",
+      "\t\t${1}",
+      "\t});"
+    ],
     "description": "监听窗口尺寸变化事件"
   },
   "uni.offWindowResize": {
     "prefix": "uni-offWindowResize",
-    "body": ["uni.offWindowResize((result)=>{", "\t\t${1}", "\t});"],
+    "body": [
+      "uni.offWindowResize((result)=>{",
+      "\t\t${1}",
+      "\t});"
+    ],
     "description": "取消监听窗口尺寸变化事件"
   },
   "uni.setTopBarText": {
@@ -2360,12 +2701,16 @@
   },
   "uni.showNavigationBarLoading": {
     "prefix": "uni-showNavigationBarLoading",
-    "body": ["uni.showNavigationBarLoading();"],
+    "body": [
+      "uni.showNavigationBarLoading();"
+    ],
     "description": "在当前页面显示导航条加载动画。"
   },
   "uni.hideNavigationBarLoading": {
     "prefix": "uni-hideNavigationBarLoading",
-    "body": ["uni.hideNavigationBarLoading();"],
+    "body": [
+      "uni.hideNavigationBarLoading();"
+    ],
     "description": "隐藏导航条加载动画。"
   },
   "uni.setNavigationBarColor": {
@@ -2519,7 +2864,11 @@
   },
   "uni.setBackgroundTextStyle": {
     "prefix": "uni-setBackgroundTextStyle",
-    "body": ["uni.setBackgroundTextStyle({", "\ttextStyle: '${1:dark}'", "});"],
+    "body": [
+      "uni.setBackgroundTextStyle({",
+      "\ttextStyle: '${1:dark}'",
+      "});"
+    ],
     "description": "动态设置下拉背景字体、loading图的样式"
   },
   "uni.navigateTo": {
@@ -2580,7 +2929,11 @@
   },
   "uni.navigateBack": {
     "prefix": "uni-navigateBack",
-    "body": ["uni.navigateBack({", "\tdelta: ${1:1}", "});"],
+    "body": [
+      "uni.navigateBack({",
+      "\tdelta: ${1:1}",
+      "});"
+    ],
     "description": "关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages()) 获取当前的页面栈，决定需要返回几层。"
   },
   "uni.createAnimation": {
@@ -2595,140 +2948,193 @@
     ],
     "description": "创建一个动画实例animation。调用实例的方法来描述动画。"
   },
-
   "animation.opacity": {
     "prefix": "animation-opacity",
-    "body": ["animation.opacity(${1});"],
+    "body": [
+      "animation.opacity(${1});"
+    ],
     "description": "透明度，参数范围 0~1"
   },
   "animation.backgroundColor": {
     "prefix": "animation-backgroundColor",
-    "body": ["animation.backgroundColor(${1});"],
+    "body": [
+      "animation.backgroundColor(${1});"
+    ],
     "description": "颜色值"
   },
   "animation.width": {
     "prefix": "animation-width",
-    "body": ["animation.width(${1});"],
+    "body": [
+      "animation.width(${1});"
+    ],
     "description": "宽度"
   },
   "animation.height": {
     "prefix": "animation-height",
-    "body": ["animation.height(${1});"],
+    "body": [
+      "animation.height(${1});"
+    ],
     "description": "长度"
   },
   "animation.top": {
     "prefix": "animation-top",
-    "body": ["animation.top(${1});"],
+    "body": [
+      "animation.top(${1});"
+    ],
     "description": "顶部距离"
   },
   "animation.left": {
     "prefix": "animation-left",
-    "body": ["animation.height(${1});"],
+    "body": [
+      "animation.height(${1});"
+    ],
     "description": "左侧距离"
   },
   "animation.bottom": {
     "prefix": "animation-bottom",
-    "body": ["animation.bottom(${1});"],
+    "body": [
+      "animation.bottom(${1});"
+    ],
     "description": "底部距离"
   },
   "animation.right": {
     "prefix": "animation-right",
-    "body": ["animation.right(${1});"],
+    "body": [
+      "animation.right(${1});"
+    ],
     "description": "右侧距离"
   },
   "animation.rotate": {
     "prefix": "animation-rotate",
-    "body": ["animation.rotate(${1});"],
+    "body": [
+      "animation.rotate(${1});"
+    ],
     "description": "绕原点旋转"
   },
   "animation.rotateX": {
     "prefix": "animation-rotateX",
-    "body": ["animation.rotateX(${1});"],
+    "body": [
+      "animation.rotateX(${1});"
+    ],
     "description": "绕x轴旋转"
   },
   "animation.rotateY": {
     "prefix": "animation-rotateY",
-    "body": ["animation.rotateY(${1});"],
+    "body": [
+      "animation.rotateY(${1});"
+    ],
     "description": "绕y轴旋转"
   },
   "animation.rotateZ": {
     "prefix": "animation-rotateZ",
-    "body": ["animation.rotateZ(${1});"],
+    "body": [
+      "animation.rotateZ(${1});"
+    ],
     "description": "绕z轴旋转"
   },
   "animation.rotate3d": {
     "prefix": "animation-rotate3d",
-    "body": ["animation.rotate3d(${1},${2},${3},${4});"],
+    "body": [
+      "animation.rotate3d(${1},${2},${3},${4});"
+    ],
     "description": "3d旋转"
   },
   "animation.scale": {
     "prefix": "animation-scale",
-    "body": ["animation.scale(${1}${2:,});"],
+    "body": [
+      "animation.scale(${1}${2:,});"
+    ],
     "description": "x轴[y轴]缩放。一个参数时，表示在X轴、Y轴两个相同；两个参数时表示在X轴，在Y轴不同"
   },
   "animation.scaleX": {
     "prefix": "animation-scaleX",
-    "body": ["animation.scaleX(${1});"],
+    "body": [
+      "animation.scaleX(${1});"
+    ],
     "description": "x轴缩放"
   },
   "animation.scaleY": {
     "prefix": "animation-scaleY",
-    "body": ["animation.scaleY(${1});"],
+    "body": [
+      "animation.scaleY(${1});"
+    ],
     "description": "y轴缩放"
   },
   "animation.scaleZ": {
     "prefix": "animation-scaleZ",
-    "body": ["animation.scaleZ(${1});"],
+    "body": [
+      "animation.scaleZ(${1});"
+    ],
     "description": "z轴缩放"
   },
   "animation.scale3d": {
     "prefix": "animation-scale3d",
-    "body": ["animation.scale3d(${1},${2},${3});"],
+    "body": [
+      "animation.scale3d(${1},${2},${3});"
+    ],
     "description": "3d缩放"
   },
   "animation.translate": {
     "prefix": "animation-translate",
-    "body": ["animation.translate(${1}${2:,});"],
+    "body": [
+      "animation.translate(${1}${2:,});"
+    ],
     "description": "x轴[y轴]偏移。一个参数时，表示在X轴；两个参数时表示在X轴，在Y轴"
   },
   "animation.translateX": {
     "prefix": "animation-translateX",
-    "body": ["animation.translateX(${1});"],
+    "body": [
+      "animation.translateX(${1});"
+    ],
     "description": "x轴偏移"
   },
   "animation.translateY": {
     "prefix": "animation-translateY",
-    "body": ["animation.translateY(${1});"],
+    "body": [
+      "animation.translateY(${1});"
+    ],
     "description": "y轴偏移"
   },
   "animation.translateZ": {
     "prefix": "animation-translateZ",
-    "body": ["animation.translateZ(${1});"],
+    "body": [
+      "animation.translateZ(${1});"
+    ],
     "description": "z轴偏移"
   },
   "animation.translate3d": {
     "prefix": "animation-translate3d",
-    "body": ["animation.translate3d(${1},${2},${3});"],
+    "body": [
+      "animation.translate3d(${1},${2},${3});"
+    ],
     "description": "3d偏移"
   },
   "animation.skew": {
     "prefix": "animation-skew",
-    "body": ["animation.skew(${1}${2:,});"],
+    "body": [
+      "animation.skew(${1}${2:,});"
+    ],
     "description": "x轴[y轴]倾斜。一个参数时，表示在X轴；两个参数时表示在X轴，在Y轴"
   },
   "animation.skewX": {
     "prefix": "animation-skewX",
-    "body": ["animation.skewX(${1});"],
+    "body": [
+      "animation.skewX(${1});"
+    ],
     "description": "x轴倾斜"
   },
   "animation.skewY": {
     "prefix": "animation-skewY",
-    "body": ["animation.skewY(${1});"],
+    "body": [
+      "animation.skewY(${1});"
+    ],
     "description": "y轴倾斜"
   },
   "animation.matrix": {
     "prefix": "animation-matrix",
-    "body": ["animation.matrix(${1},${2},${3},${4},${5},${6});"],
+    "body": [
+      "animation.matrix(${1},${2},${3},${4},${5},${6});"
+    ],
     "description": "平面矩阵变换"
   },
   "animation.matrix3d": {
@@ -2763,7 +3169,9 @@
   },
   "uni.stopPullDownRefresh": {
     "prefix": "uni-stopPullDownRefresh",
-    "body": ["uni.stopPullDownRefresh"],
+    "body": [
+      "uni.stopPullDownRefresh"
+    ],
     "description": "停止当前页面下拉刷新。"
   },
   "uni.getExtConfig": {
@@ -2781,7 +3189,9 @@
   },
   "uni.getExtConfigSync": {
     "prefix": "uni-getExtConfigSync",
-    "body": ["${1:let extConfig = }uni.getExtConfigSync();"],
+    "body": [
+      "${1:let extConfig = }uni.getExtConfigSync();"
+    ],
     "description": "同步获取第三方平台自定义的数据字段"
   },
   "uni.login": {
@@ -2934,7 +3344,9 @@
   },
   "uni.getAccountInfoSync": {
     "prefix": "uni-getAccountInfoSync",
-    "body": ["${1:let accInfo = }uni.getAccountInfoSync();"],
+    "body": [
+      "${1:let accInfo = }uni.getAccountInfoSync();"
+    ],
     "description": "获取当前账号信息"
   },
   "uni.chooseAddress": {
@@ -3120,52 +3532,72 @@
   },
   "uni.getUpdateManager": {
     "prefix": "uni-getUpdateManager",
-    "body": ["${1:let updateManager = }uni.getUpdateManager();"],
+    "body": [
+      "${1:let updateManager = }uni.getUpdateManager();"
+    ],
     "description": "获取全局唯一的版本更新管理器，用于管理小程序更新。"
   },
   "updateManager.onCheckForUpdate": {
     "prefix": "updateManager-onCheckForUpdate",
-    "body": ["updateManager.onCheckForUpdate((result) => {${1}});"],
+    "body": [
+      "updateManager.onCheckForUpdate((result) => {${1}});"
+    ],
     "description": "当向微信后台请求完新版本信息，会进行回调"
   },
   "updateManager.onUpdateReady": {
     "prefix": "updateManager-onUpdateReady",
-    "body": ["updateManager.onUpdateReady((result) => {${1}});"],
+    "body": [
+      "updateManager.onUpdateReady((result) => {${1}});"
+    ],
     "description": "当新版本下载完成，会进行回调"
   },
   "updateManager.onUpdateFailed": {
     "prefix": "updateManager-onUpdateFailed",
-    "body": ["updateManager.onUpdateFailed((result) => {${1}});"],
+    "body": [
+      "updateManager.onUpdateFailed((result) => {${1}});"
+    ],
     "description": "当新版本下载失败，会进行回调"
   },
   "updateManager.applyUpdate": {
     "prefix": "updateManager-applyUpdate",
-    "body": ["updateManager.applyUpdate();"],
+    "body": [
+      "updateManager.applyUpdate();"
+    ],
     "description": "当新版本下载完成，调用该方法会强制当前小程序应用上新版本并重启"
   },
   "uni.createWorker": {
     "prefix": "uni-createWorker",
-    "body": ["${1:let worker = }uni.createWorker(${1});"],
+    "body": [
+      "${1:let worker = }uni.createWorker(${1});"
+    ],
     "description": "创建一个Worker线程，并返回Worker实例，目前限制最多只能创建一个Worker，创建下一个Worker前请调用Worker.terminate。"
   },
   "worker.postMessage": {
     "prefix": "worker-postMessage",
-    "body": ["worker.postMessage(${1});"],
+    "body": [
+      "worker.postMessage(${1});"
+    ],
     "description": "向Worker线程发送的消息。"
   },
   "worker.onMessage": {
     "prefix": "worker-onMessage",
-    "body": ["worker.onMessage((result) => {${1}});"],
+    "body": [
+      "worker.onMessage((result) => {${1}});"
+    ],
     "description": "监听Worker线程向当前线程发送的消息"
   },
   "worker.terminate": {
     "prefix": "worker-terminate",
-    "body": ["worker.terminate();"],
+    "body": [
+      "worker.terminate();"
+    ],
     "description": "结束当前Worker线程，仅限在主线程Worker实例上调用。"
   },
   "uni.reportMonitor": {
     "prefix": "uni-reportMonitor",
-    "body": ["uni.reportMonitor(${1:name},${2:value});"],
+    "body": [
+      "uni.reportMonitor(${1:name},${2:value});"
+    ],
     "description": "自定义业务数据监控上报接口。"
   },
   "uni.setEnableDebug": {
@@ -3184,27 +3616,37 @@
   },
   "uni.getLogManager": {
     "prefix": "uni-getLogManager",
-    "body": ["${1:let logger = }uni.getLogManager();"],
+    "body": [
+      "${1:let logger = }uni.getLogManager();"
+    ],
     "description": "获取日志管理器 logManager 对象。"
   },
   "logger.log": {
     "prefix": "logger-log",
-    "body": ["logger.log(${1});"],
+    "body": [
+      "logger.log(${1});"
+    ],
     "description": "写log日志，可以提供任意个参数。"
   },
   "logger.info": {
     "prefix": "logger-info",
-    "body": ["logger.info(${1});"],
+    "body": [
+      "logger.info(${1});"
+    ],
     "description": "写info日志，可以提供任意个参数。"
   },
   "logger.warn": {
     "prefix": "logger-warn",
-    "body": ["logger.warn(${1});"],
+    "body": [
+      "logger.warn(${1});"
+    ],
     "description": "写warn日志，可以提供任意个参数。"
   },
   "logger.debug": {
     "prefix": "logger-debug",
-    "body": ["logger.debug(${1});"],
+    "body": [
+      "logger.debug(${1});"
+    ],
     "description": "写debug日志，可以提供任意个参数。"
   },
   "uni.canvasToTempFilePath": {
@@ -3275,22 +3717,30 @@
   },
   "cvsCtx.setFillStyle": {
     "prefix": "cvsCtx-setFillStyle",
-    "body": ["cvsCtx.setFillStyle('${1}');"],
+    "body": [
+      "cvsCtx.setFillStyle('${1}');"
+    ],
     "description": "设置填充色。"
   },
   "cvsCtx.fillStyle": {
     "prefix": "cvsCtx-fillStyle",
-    "body": ["cvsCtx.fillStyle = ${1};"],
+    "body": [
+      "cvsCtx.fillStyle = ${1};"
+    ],
     "description": "设置填充色。基础库 1.9.90 起支持"
   },
   "cvsCtx.setStrokeStyle": {
     "prefix": "cvsCtx-setStrokeStyle",
-    "body": ["cvsCtx.setStrokeStyle(${1});"],
+    "body": [
+      "cvsCtx.setStrokeStyle(${1});"
+    ],
     "description": "设置边框颜色。"
   },
   "cvsCtx.strokeStyle": {
     "prefix": "cvsCtx-strokeStyle",
-    "body": ["cvsCtx.strokeStyle = ${1};"],
+    "body": [
+      "cvsCtx.strokeStyle = ${1};"
+    ],
     "description": "设置边框颜色。基础库 1.9.90 起支持"
   },
   "cvsCtx.setShadow": {
@@ -3309,102 +3759,142 @@
   },
   "cvsCtx.createCircularGradient": {
     "prefix": "cvsCtx-createCircularGradient",
-    "body": ["cvsCtx.createCircularGradient(${1:x}, ${2:y}, ${3:r});"],
+    "body": [
+      "cvsCtx.createCircularGradient(${1:x}, ${2:y}, ${3:r});"
+    ],
     "description": "创建一个圆形的渐变颜色。需要使用 addColorStop() 来指定渐变点，至少要两个。"
   },
   "cvsCtx.addColorStop": {
     "prefix": "cvsCtx-addColorStop",
-    "body": ["cvsCtx.addColorStop(${1:stop(0 ~ 1)}, ${2:color});"],
+    "body": [
+      "cvsCtx.addColorStop(${1:stop(0 ~ 1)}, ${2:color});"
+    ],
     "description": "创建一个颜色的渐变点。"
   },
   "cvsCtx.setLineWidth": {
     "prefix": "cvsCtx-setLineWidth",
-    "body": ["cvsCtx.setLineWidth(${1});"],
+    "body": [
+      "cvsCtx.setLineWidth(${1});"
+    ],
     "description": "设置线条的宽度。"
   },
   "cvsCtx.lineWidth": {
     "prefix": "cvsCtx-lineWidth",
-    "body": ["cvsCtx.lineWidth = ${1};"],
+    "body": [
+      "cvsCtx.lineWidth = ${1};"
+    ],
     "description": "设置线条的宽度。基础库 1.9.90 起支持"
   },
   "cvsCtx.setLineCap": {
     "prefix": "cvsCtx-setLineCap",
-    "body": ["cvsCtx.setLineCap('${1:butt}');"],
+    "body": [
+      "cvsCtx.setLineCap('${1:butt}');"
+    ],
     "description": "设置线条的端点样式。"
   },
   "cvsCtx.lineCap": {
     "prefix": "cvsCtx-lineCap",
-    "body": ["cvsCtx.lineCap = '${1:butt}';"],
+    "body": [
+      "cvsCtx.lineCap = '${1:butt}';"
+    ],
     "description": "设置线条的端点样式。基础库 1.9.90 起支持"
   },
   "cvsCtx.setLineJoin": {
     "prefix": "cvsCtx-setLineJoin",
-    "body": ["cvsCtx.setLineJoin('${1:bevel}');"],
+    "body": [
+      "cvsCtx.setLineJoin('${1:bevel}');"
+    ],
     "description": "设置线条的交点样式。"
   },
   "cvsCtx.lineJoin": {
     "prefix": "cvsCtx-lineJoin",
-    "body": ["cvsCtx.lineJoin = '${1:bevel}';"],
+    "body": [
+      "cvsCtx.lineJoin = '${1:bevel}';"
+    ],
     "description": "设置线条的交点样式。基础库 1.9.90 起支持"
   },
   "cvsCtx.setLineDash": {
     "prefix": "cvsCtx-setLineDash",
-    "body": ["cvsCtx.setLineDash([${1:pattern}], ${2:offset});"],
+    "body": [
+      "cvsCtx.setLineDash([${1:pattern}], ${2:offset});"
+    ],
     "description": "设置线条的宽度。"
   },
   "cvsCtx.setMiterLimit": {
     "prefix": "cvsCtx-setMiterLimit",
-    "body": ["cvsCtx.setMiterLimit(${1});"],
+    "body": [
+      "cvsCtx.setMiterLimit(${1});"
+    ],
     "description": "设置最大斜接长度，斜接长度指的是在两条线交汇处内角和外角之间的距离。 当 setLineJoin() 为 miter 时才有效。"
   },
   "cvsCtx.rect": {
     "prefix": "cvsCtx-rect",
-    "body": ["cvsCtx.rect(${1:x}, ${2:y}, ${3:width}, ${4:height});"],
+    "body": [
+      "cvsCtx.rect(${1:x}, ${2:y}, ${3:width}, ${4:height});"
+    ],
     "description": "创建一个矩形。"
   },
   "cvsCtx.fillRect": {
     "prefix": "cvsCtx-fillRect",
-    "body": ["cvsCtx.fillRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"],
+    "body": [
+      "cvsCtx.fillRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"
+    ],
     "description": "填充一个矩形。"
   },
   "cvsCtx.strokeRect": {
     "prefix": "cvsCtx-strokeRect",
-    "body": ["cvsCtx.strokeRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"],
+    "body": [
+      "cvsCtx.strokeRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"
+    ],
     "description": "画一个矩形(非填充)。"
   },
   "cvsCtx.clearRect": {
     "prefix": "cvsCtx-clearRect",
-    "body": ["cvsCtx.clearRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"],
+    "body": [
+      "cvsCtx.clearRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"
+    ],
     "description": "清除画布上在该矩形区域内的内容。"
   },
   "cvsCtx.fill": {
     "prefix": "cvsCtx-fill",
-    "body": ["cvsCtx.fill();"],
+    "body": [
+      "cvsCtx.fill();"
+    ],
     "description": "对当前路径中的内容进行填充。"
   },
   "cvsCtx.stroke": {
     "prefix": "cvsCtx-stroke",
-    "body": ["cvsCtx.stroke();"],
+    "body": [
+      "cvsCtx.stroke();"
+    ],
     "description": "画出当前路径的边框。"
   },
   "cvsCtx.beginPath": {
     "prefix": "cvsCtx-beginPath",
-    "body": ["cvsCtx.beginPath();"],
+    "body": [
+      "cvsCtx.beginPath();"
+    ],
     "description": "开始创建一个路径，需要调用fill或者stroke才会使用路径进行填充或描边。"
   },
   "cvsCtx.closePath": {
     "prefix": "cvsCtx-closePath",
-    "body": ["cvsCtx.closePath();"],
+    "body": [
+      "cvsCtx.closePath();"
+    ],
     "description": "关闭一个路径"
   },
   "cvsCtx.moveTo": {
     "prefix": "cvsCtx-moveTo",
-    "body": ["cvsCtx.moveTo(${1:x}, ${2:y});"],
+    "body": [
+      "cvsCtx.moveTo(${1:x}, ${2:y});"
+    ],
     "description": "把路径移动到画布中的指定点，不创建线条。"
   },
   "cvsCtx.lineTo": {
     "prefix": "cvsCtx-lineTo",
-    "body": ["cvsCtx.lineTo(${1:x}, ${2:y});"],
+    "body": [
+      "cvsCtx.lineTo(${1:x}, ${2:y});"
+    ],
     "description": "lineTo 方法增加一个新点，然后创建一条从上次指定点到目标点的线。"
   },
   "cvsCtx.arc": {
@@ -3423,57 +3913,79 @@
   },
   "cvsCtx.quadraticCurveTo": {
     "prefix": "cvsCtx-quadraticCurveTo",
-    "body": ["cvsCtx.quadraticCurveTo(${1:cpx}, ${2:cpy}, ${3:x}, ${4:y});"],
+    "body": [
+      "cvsCtx.quadraticCurveTo(${1:cpx}, ${2:cpy}, ${3:x}, ${4:y});"
+    ],
     "description": "创建二次贝塞尔曲线路径。曲线的起始点为路径中前一个点。"
   },
   "cvsCtx.scale": {
     "prefix": "cvsCtx-scale",
-    "body": ["cvsCtx.scale(${1:scaleWidth}, ${2:scaleHeight});"],
+    "body": [
+      "cvsCtx.scale(${1:scaleWidth}, ${2:scaleHeight});"
+    ],
     "description": "在调用scale方法后，之后创建的路径其横纵坐标会被缩放。多次调用scale，倍数会相乘。"
   },
   "cvsCtx.rotate": {
     "prefix": "cvsCtx-rotate",
-    "body": ["cvsCtx.rotate(${1:degrees} * Math.PI/180);"],
+    "body": [
+      "cvsCtx.rotate(${1:degrees} * Math.PI/180);"
+    ],
     "description": "以原点为中心，原点可以用 translate方法修改。顺时针旋转当前坐标轴。"
   },
   "cvsCtx.translate": {
     "prefix": "cvsCtx-translate",
-    "body": ["cvsCtx.translate(${1:x}, ${2:y});"],
+    "body": [
+      "cvsCtx.translate(${1:x}, ${2:y});"
+    ],
     "description": "对当前坐标系的原点(0, 0)进行变换，默认的坐标系原点为页面左上角。"
   },
   "cvsCtx.clip": {
     "prefix": "cvsCtx-clip",
-    "body": ["cvsCtx.clip();"],
+    "body": [
+      "cvsCtx.clip();"
+    ],
     "description": "从原始画布中剪切任意形状和尺寸。"
   },
   "cvsCtx.setFontSize": {
     "prefix": "cvsCtx-setFontSize",
-    "body": ["cvsCtx.setFontSize(${1:20});"],
+    "body": [
+      "cvsCtx.setFontSize(${1:20});"
+    ],
     "description": "设置字体的字号。"
   },
   "cvsCtx.fillText": {
     "prefix": "cvsCtx-fillText",
-    "body": ["cvsCtx.fillText('${1:text}', ${2:x}, ${3:y});"],
+    "body": [
+      "cvsCtx.fillText('${1:text}', ${2:x}, ${3:y});"
+    ],
     "description": "在画布上绘制被填充的文本。"
   },
   "cvsCtx.setTextAlign": {
     "prefix": "cvsCtx-setTextAlign",
-    "body": ["cvsCtx.setTextAlign('${1:center}');"],
+    "body": [
+      "cvsCtx.setTextAlign('${1:center}');"
+    ],
     "description": "用于设置文字的对齐"
   },
   "cvsCtx.textAlign": {
     "prefix": "cvsCtx-textAlign",
-    "body": ["cvsCtx.textAlign = '${1:center}';"],
+    "body": [
+      "cvsCtx.textAlign = '${1:center}';"
+    ],
     "description": "用于设置文字的对齐,基础库 1.9.90 起支持"
   },
   "cvsCtx.setTextBaseline": {
     "prefix": "cvsCtx-setTextBaseline",
-    "body": ["cvsCtx.setTextBaseline('${1:middle}');"],
+    "body": [
+      "cvsCtx.setTextBaseline('${1:middle}');"
+    ],
     "description": "用于设置文字的水平对齐"
   },
   "cvsCtx.textBaseline": {
     "prefix": "cvsCtx-textBaseline",
-    "body": ["cvsCtx.textBaseline = '${1:middle}';"],
+    "body": [
+      "cvsCtx.textBaseline = '${1:middle}';"
+    ],
     "description": "用于设置文字的水平对齐,基础库 1.9.90 起支持"
   },
   "cvsCtx.drawImage": {
@@ -3485,77 +3997,107 @@
   },
   "cvsCtx.setGlobalAlpha": {
     "prefix": "cvsCtx-setGlobalAlpha",
-    "body": ["cvsCtx.setGlobalAlpha(${1:1});"],
+    "body": [
+      "cvsCtx.setGlobalAlpha(${1:1});"
+    ],
     "description": "设置全局画笔透明度。"
   },
   "cvsCtx.globalAlpha": {
     "prefix": "cvsCtx-globalAlpha",
-    "body": ["cvsCtx.globalAlpha = ${1:1};"],
+    "body": [
+      "cvsCtx.globalAlpha = ${1:1};"
+    ],
     "description": "设置全局画笔透明度。基础库 1.9.90 起支持"
   },
   "cvsCtx.save": {
     "prefix": "cvsCtx-save",
-    "body": ["cvsCtx.save();"],
+    "body": [
+      "cvsCtx.save();"
+    ],
     "description": "保存当前的绘图上下文。"
   },
   "cvsCtx.restore": {
     "prefix": "cvsCtx-restore",
-    "body": ["cvsCtx.restore();"],
+    "body": [
+      "cvsCtx.restore();"
+    ],
     "description": "恢复之前保存的绘图上下文。"
   },
   "cvsCtx.draw": {
     "prefix": "cvsCtx-draw",
-    "body": ["cvsCtx.draw(${1:true}, ${2:callback});"],
+    "body": [
+      "cvsCtx.draw(${1:true}, ${2:callback});"
+    ],
     "description": "将之前在绘图上下文中的描述（路径、变形、样式）画到 canvas 中"
   },
   "cvsCtx.measureText": {
     "prefix": "cvsCtx-measureText",
-    "body": ["${1:let metrics =}cvsCtx.measureText(${2});"],
+    "body": [
+      "${1:let metrics =}cvsCtx.measureText(${2});"
+    ],
     "description": "测量文本尺寸信息，目前仅返回文本宽度。同步接口。"
   },
   "cvsCtx.globalCompositeOperation": {
     "prefix": "cvsCtx-globalCompositeOperation",
-    "body": ["cvsCtx.globalCompositeOperation = ${1};"],
+    "body": [
+      "cvsCtx.globalCompositeOperation = ${1};"
+    ],
     "description": "该属性是设置要在绘制新形状时应用的合成操作的类型。"
   },
   "cvsCtx.arcTo": {
     "prefix": "cvsCtx-arcTo",
-    "body": ["cvsCtx.arcTo(${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}, ${5:radius});"],
+    "body": [
+      "cvsCtx.arcTo(${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}, ${5:radius});"
+    ],
     "description": "根据控制点和半径绘制圆弧路径。"
   },
   "cvsCtx.strokeText": {
     "prefix": "cvsCtx-strokeText",
-    "body": ["cvsCtx.strokeText(${1:text}, ${2:x}, ${3:y});"],
+    "body": [
+      "cvsCtx.strokeText(${1:text}, ${2:x}, ${3:y});"
+    ],
     "description": "给定的 (x, y) 位置绘制文本描边的方法"
   },
   "cvsCtx.lineDashOffset": {
     "prefix": "cvsCtx-lineDashOffset",
-    "body": ["cvsCtx.lineDashOffset = ${1:value};"],
+    "body": [
+      "cvsCtx.lineDashOffset = ${1:value};"
+    ],
     "description": "设置虚线偏移量的属性"
   },
   "cvsCtx.createPattern": {
     "prefix": "cvsCtx-createPattern",
-    "body": ["cvsCtx.createPattern(${1:image}, ${2:repetition});"],
+    "body": [
+      "cvsCtx.createPattern(${1:image}, ${2:repetition});"
+    ],
     "description": "对指定的图像创建模式的方法，可在指定的方向上重复元图像"
   },
   "cvsCtx.shadowBlur": {
     "prefix": "cvsCtx-shadowBlur",
-    "body": ["cvsCtx.shadowBlur = ${1:value};"],
+    "body": [
+      "cvsCtx.shadowBlur = ${1:value};"
+    ],
     "description": "设置阴影的模糊级别"
   },
   "cvsCtx.shadowColor": {
     "prefix": "cvsCtx-shadowColor",
-    "body": ["cvsCtx.shadowColor = ${1:value};"],
+    "body": [
+      "cvsCtx.shadowColor = ${1:value};"
+    ],
     "description": "设置阴影的颜色"
   },
   "cvsCtx.shadowOffsetX": {
     "prefix": "cvsCtx-shadowOffsetX",
-    "body": ["cvsCtx.shadowOffsetX = ${1:value};"],
+    "body": [
+      "cvsCtx.shadowOffsetX = ${1:value};"
+    ],
     "description": "设置阴影相对于形状在水平方向的偏移"
   },
   "cvsCtx.shadowOffsetY": {
     "prefix": "cvsCtx-shadowOffsetY",
-    "body": ["cvsCtx.shadowOffsetY = ${1:value};"],
+    "body": [
+      "cvsCtx.shadowOffsetY = ${1:value};"
+    ],
     "description": "设置阴影相对于形状在竖直方向的偏移"
   },
   "cvsCtx.font": {
@@ -3572,10 +4114,11 @@
     ],
     "description": "使用矩阵重新设置（覆盖）当前变换的方法"
   },
-
   "uni.getFileSystemManager": {
     "prefix": "uni-getFileSystemManager",
-    "body": ["${1:let fileManager = }uni.getFileSystemManager();"],
+    "body": [
+      "${1:let fileManager = }uni.getFileSystemManager();"
+    ],
     "description": "获取全局唯一的文件管理器。"
   },
   "fileManager.appendFile": {
@@ -3877,12 +4420,16 @@
   },
   "fileStat.isDirectory": {
     "prefix": "fileStat-isDirectory",
-    "body": ["fileStat.isDirectory();"],
+    "body": [
+      "fileStat.isDirectory();"
+    ],
     "description": "判断当前文件是否一个目录"
   },
   "fileStat.isFile": {
     "prefix": "fileStat-isFile",
-    "body": ["fileStat.isFile();"],
+    "body": [
+      "fileStat.isFile();"
+    ],
     "description": "判断当前文件是否一个普通文件"
   },
   "fileManager.unlink": {
@@ -3954,7 +4501,9 @@
   },
   "uni.getMenuButtonBoundingClientRect": {
     "prefix": "uni-getMenuButtonBoundingClientRect",
-    "body": ["let ${1:menuButton} = uni.getMenuButtonBoundingClientRect();"],
+    "body": [
+      "let ${1:menuButton} = uni.getMenuButtonBoundingClientRect();"
+    ],
     "description": "获取菜单按钮的布局置信息"
   },
   "uni.createIntersectionObserver": {
@@ -3966,57 +4515,97 @@
   },
   "interObser.relativeTo": {
     "prefix": "interObser-relativeTo",
-    "body": ["interObser.relativeTo(${1:selector},${2});"],
+    "body": [
+      "interObser.relativeTo(${1:selector},${2});"
+    ],
     "description": "使用选择器指定一个节点，作为参照区域之一"
   },
   "interObser.relativeToViewport": {
     "prefix": "interObser-relativeToViewport",
-    "body": ["interObser.relativeToViewport(${1});"],
+    "body": [
+      "interObser.relativeToViewport(${1});"
+    ],
     "description": "指定页面显示区域作为参照区域之一"
   },
   "interObser.observe": {
     "prefix": "interObser-observe",
-    "body": ["interObser.observe(${1:selector},(result)=>{", "\t${2}", "});"],
+    "body": [
+      "interObser.observe(${1:selector},(result)=>{",
+      "\t${2}",
+      "});"
+    ],
     "description": "指定目标节点并开始监听相交状态变化情况"
   },
   "interObser.disconnect": {
     "prefix": "interObser-disconnect",
-    "body": ["interObser.disconnect();"],
+    "body": [
+      "interObser.disconnect();"
+    ],
     "description": "停止监听。回调函数将不再触发"
   },
   "uni.createSelectorQuery": {
     "prefix": "uni-createSelectorQuery",
-    "body": ["let ${1:selQuery} = uni.createSelectorQuery();"],
+    "body": [
+      "let ${1:selQuery} = uni.createSelectorQuery();"
+    ],
     "description": "返回一个 SelectorQuery 对象实例。"
   },
   "selQuery.in": {
     "prefix": "selQuery-in",
-    "body": ["selQuery.in(${1:this});"],
+    "body": [
+      "selQuery.in(${1:this});"
+    ],
     "description": "将选择器的选取范围更改为自定义组件 component 内（初始时，选择器仅选取页面范围的节点，不会选取任何自定义组件中的节点）。"
   },
   "selQuery.select": {
     "prefix": "selQuery-select",
-    "body": ["selQuery.select(${2:selector});"],
+    "body": [
+      "selQuery.select(${2:selector});"
+    ],
     "description": "在当前页面下选择第一个匹配选择器 selector 的节点，返回一个 NodesRef 对象实例，可以用于获取节点信息"
   },
   "selQuery.selectAll": {
     "prefix": "selQuery-selectAll",
-    "body": ["selQuery.selectAll();"],
+    "body": [
+      "selQuery.selectAll();"
+    ],
     "description": "在当前页面下选择匹配选择器 selector 的所有节点。"
   },
   "selQuery.selectViewport": {
     "prefix": "selQuery-selectViewport",
-    "body": ["selQuery.selectViewport();"],
+    "body": [
+      "selQuery.selectViewport();"
+    ],
     "description": "选择显示区域，可用于获取显示区域的尺寸、滚动位置等信息。"
   },
   "selQuery.exec": {
     "prefix": "selQuery-exec",
-    "body": ["selQuery.exec(result)=>{", "\t${1}", "});"],
+    "body": [
+      "selQuery.exec(result)=>{",
+      "\t${1}",
+      "});"
+    ],
     "description": "执行所有的请求，请求结果按请求次序构成数组，在callback的第一个参数中返回。"
   },
   "生命周期钩子": {
     "prefix": "uni-on",
     "body": "on${1|Launch,Show,Hide,Error,UniNViewMessage,UnhandledRejection,PageNotFound,ThemeChange,Init,Load,Ready,Unload,Resize,PullDownRefresh,ReachBottom,TabItemTap,ShareAppMessage,PageScroll,NavigationBarButtonTap,BackPress,NavigationBarSearchInputChanged,NavigationBarSearchInputConfirmed,NavigationBarSearchInputClicked,ShareTimeline,AddToFavorites|}(e){${2}}",
     "description": "uni-app 支持如下应用生命周期函数 https://uniapp.dcloud.io/api/lifecycle?id=%e5%ba%94%e7%94%a8%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f"
+  },
+  "if 脚本条件编译": {
+    "prefix": "#ifdef",
+    "body": [
+      "// #ifdef ${1|APP-PLUS,APP-PLUS-NVUE,MP,MP-ALIPAY,MP-BAIDU,MP-WEIXIN,MP-QQ,H5|}",
+      "$0",
+      "// #endif"
+    ]
+  },
+  "ifn 脚本条件编译": {
+    "prefix": "#ifndef",
+    "body": [
+      "// #ifndef ${1|APP-PLUS,APP-PLUS-NVUE,MP,MP-ALIPAY,MP-BAIDU,MP-WEIXIN,MP-QQ,H5|}",
+      "$0",
+      "// #endif"
+    ]
   }
 }
