@@ -1,7 +1,11 @@
 {
   "view": {
     "prefix": "view",
-    "body": ["<view class=\"${1}\">", "\t${4}", "</view>"],
+    "body": [
+      "<view class=\"${1}\">",
+      "\t${4}",
+      "</view>"
+    ],
     "description": "基础的视图容器"
   },
   "view-for": {
@@ -15,7 +19,9 @@
   },
   "comments": {
     "prefix": "<!--",
-    "body": ["<!--${1}-->"],
+    "body": [
+      "<!--${1}-->"
+    ],
     "description": "comments"
   },
   "scroll-view": {
@@ -57,7 +63,11 @@
   },
   "movable-view": {
     "prefix": "movable-view",
-    "body": ["<movable-view class=\"${1}\" >", "\t${17}", "</movable-view>"],
+    "body": [
+      "<movable-view class=\"${1}\" >",
+      "\t${17}",
+      "</movable-view>"
+    ],
     "description": "可移动的视图容器 在页面中可以拖拽滑动"
   },
   "cover-view": {
@@ -89,7 +99,11 @@
   },
   "text": {
     "prefix": "text",
-    "body": ["<text class=\"${1}\">", "\t${5}", "</text>"],
+    "body": [
+      "<text class=\"${1}\">",
+      "\t${5}",
+      "</text>"
+    ],
     "description": "文本"
   },
   "rich-text": {
@@ -161,7 +175,11 @@
   },
   "label": {
     "prefix": "label",
-    "body": ["<label class=\"${1}\" for=\"${2}\">", "\t${3}", "</label>"],
+    "body": [
+      "<label class=\"${1}\" for=\"${2}\">",
+      "\t${3}",
+      "</label>"
+    ],
     "description": "用来改进表单组件的可用性，使用for属性找到对应的id，或者将控件放在该标签下，当点击时，就会触发对应的控件。for优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。目前可以绑定的控件有<button/>、<checkbox/>、<radio/>、<switch/>"
   },
   "picker": {
@@ -185,12 +203,20 @@
   },
   "picker-view-column": {
     "prefix": "picker-view-column",
-    "body": ["<picker-view-column>", "\t${1}", "</picker-view-column>"],
+    "body": [
+      "<picker-view-column>",
+      "\t${1}",
+      "</picker-view-column>"
+    ],
     "description": "仅可放置于<picker-view />中 其孩子节点的高度会自动设置成与picker-view的选中框的高度一致"
   },
   "radio-group": {
     "prefix": "radio-group",
-    "body": ["<radio-group @change=\"${1}\">", "\t${2}", "</radio-group>"],
+    "body": [
+      "<radio-group @change=\"${1}\">",
+      "\t${2}",
+      "</radio-group>"
+    ],
     "description": "单项选择器 内部由多个<radio/>组成"
   },
   "radio": {
@@ -302,7 +328,6 @@
     ],
     "description": "实时音视频录制。需要用户授权 scope.camera、scope.record。默认宽度为100%、无默认高度，请通过wxss设置宽高"
   },
-
   "map": {
     "prefix": "map",
     "body": [
@@ -328,7 +353,9 @@
   },
   "web-view": {
     "prefix": "web-view",
-    "body": ["<web-view :src=\"${1}\" @message=\"${2}\"></web-view>"],
+    "body": [
+      "<web-view :src=\"${1}\" @message=\"${2}\"></web-view>"
+    ],
     "description": "可以用来承载网页的容器，会自动铺满整个小程序页面"
   },
   "ad": {
@@ -349,7 +376,11 @@
   },
   "bif": {
     "prefix": "block-if",
-    "body": ["<block v-if=\"${1}\">", "\t${2}", "</block>"],
+    "body": [
+      "<block v-if=\"${1}\">",
+      "\t${2}",
+      "</block>"
+    ],
     "description": "block标签的if操作"
   },
   "$u.trim": {
@@ -556,5 +587,23 @@
     "prefix": "$u.getRect",
     "body": "\\$u.getRect($1)",
     "description": "getRect 节点布局信息"
+  },
+  "if html条件编译": {
+    "prefix": "#ifdef",
+    "body": [
+      "<!-- #ifdef ${1|APP-PLUS,MP,MP-ALIPAY,MP-BAIDU,MP-WEIXIN,MP-QQ,H5|} -->",
+      "$0",
+      "<!-- #endif -->"
+    ],
+    "scope": "vue-html"
+  },
+  "ifn html条件编译": {
+    "prefix": "#ifndef",
+    "body": [
+      "<!-- #ifndef ${1|APP-PLUS,MP,MP-ALIPAY,MP-BAIDU,MP-WEIXIN,MP-QQ,H5|} -->",
+      "$0",
+      "<!-- #endif -->"
+    ],
+    "scope": "vue-html"
   }
 }

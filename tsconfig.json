@@ -1,26 +1,33 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "ES2020",
     "outDir": "out",
-    "lib": ["es6"],
-    "sourceMap": true,
+    "lib": [
+      "ES2020"
+    ],
+    "sourceMap": false,
     "rootDir": "src",
-    "declaration": true,
+    "declaration": false,
     "removeComments": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
     "importHelpers": false,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noImplicitThis": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "strict": true
+    "noImplicitThis": false,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitReturns": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "strict": false
   },
-  "exclude": ["node_modules", ".vscode-test"],
-  "include": ["src"]
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ],
+  "include": [
+    "src"
+  ]
 }

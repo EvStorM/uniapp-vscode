@@ -119,7 +119,7 @@ export default abstract class AutoCompletion {
     //     isPug && defaultValue === "false" ? `${a.name}=false` : a.name
     //   );
     // } else {
-    let value = a?.addBrace ? "{{${1}}}" : this.setDefault(1, defaultValue);
+    let value = a && a.addBrace ? "{{${1}}}" : this.setDefault(1, defaultValue);
 
     // 是否有可选值，如果有可选值则触发命令的自动补全
     let values = a.enum
