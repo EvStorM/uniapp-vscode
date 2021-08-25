@@ -9,7 +9,7 @@
     "小程序",
     "微信小程序"
   ],
-  "version": "0.3.8",
+  "version": "0.3.9",
   "publisher": "evils",
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "build-vsix": "vsce package",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
@@ -189,7 +190,6 @@
           "default": "wxml",
           "enum": [
             "wxml",
-            "prettier",
             "prettyHtml"
           ],
           "description": "wxml 格式化工具"
@@ -201,21 +201,10 @@
             "tabWidth": 2,
             "printWidth": 100,
             "singleQuote": false,
-            "usePrettier": true,
             "wrapAttributes": false,
             "sortAttributes": false
           },
           "description": "prettyHtml 配置"
-        },
-        "uniapp-vscode.prettier": {
-          "type": "object",
-          "default": {
-            "useTabs": false,
-            "tabWidth": 2,
-            "printWidth": 100,
-            "singleQuote": false
-          },
-          "description": "prettier 配置"
         },
         "uniapp-vscode.documentSelector": {
           "type": "array",
@@ -324,6 +313,18 @@
       {
         "language": "json",
         "path": "./snippets/wxjson.json"
+      },
+      {
+        "language": "css",
+        "path": "./snippets/style.json"
+      },
+      {
+        "language": "sass",
+        "path": "./snippets/style.json"
+      },
+      {
+        "language": "scss",
+        "path": "./snippets/style.json"
       }
     ]
   },
@@ -339,13 +340,11 @@
     "@types/glob": "^7.1.1",
     "@types/jest": "^22.1.3",
     "@types/node": "^10.12.21",
-    "@types/prettier": "~2.3.2",
     "@types/resolve": "1.20.1",
     "@types/sass": "~1.16.1",
     "glob": "^7.1.4",
     "jest": "^22.1.4",
     "mocha": "^6.1.4",
-    "prettier": "1.18.2",
     "ts-jest": "^22.0.2",
     "typescript": "^3.3.1",
     "vscode": "^1.1.37",
