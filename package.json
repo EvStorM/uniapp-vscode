@@ -9,7 +9,7 @@
     "小程序",
     "微信小程序"
   ],
-  "version": "0.3.7",
+  "version": "0.3.8",
   "publisher": "evils",
   "repository": {
     "type": "git",
@@ -328,7 +328,7 @@
     ]
   },
   "dependencies": {
-    "evils-uniapp": "3.1.2",
+    "evils-uniapp": "3.1.3",
     "@minapp/wxml-parser": "^2.1.5",
     "resolve": "^1.20.0",
     "read-pkg-up": "^6.0.0",
