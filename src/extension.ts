@@ -10,7 +10,17 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import { ExtensionContext, languages, workspace } from "vscode";
+import * as path from "path";
+import * as fs from "fs";
+import * as cjson from "comment-json";
+
+import {
+  ExtensionContext,
+  languages,
+  workspace,
+  commands,
+  window,
+} from "vscode";
 
 import LinkProvider from "./plugin/LinkProvider";
 import ActiveTextEditorListener from "./plugin/ActiveTextEditorListener";
@@ -56,7 +66,130 @@ export function activate(context: ExtensionContext) {
   const html = schemes("html");
   const enter = config.showSuggestionOnEnter ? ["\n"] : [];
 
+  // 创建easycom组件命令
+  const CreateComponent = commands.registerCommand(
+    "uniapp.create-component",
+    async (fileUri) => {
+      if (!fileUri) return;
+
+      const createDir = path.resolve(fileUri.fsPath);
+      if (!createDir) return;
+      const componentName = await window.showInputBox({
+        placeHolder: "组件名称",
+      });
+
+      const d = path.join(createDir, componentName);
+      const f = path.join(d, componentName + ".vue");
+      if (fs.existsSync(f)) {
+        window.showErrorMessage("文件已存在!");
+        return;
+      }
+
+      fs.mkdirSync(d);
+
+      fs.writeFileSync(
+        f,
+        `<template>
+  <view></view>
+</template>
+
+<script>
+  export default {
+    name:"${componentName}",
+    data() {
+      return {
+        
+      };
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+    
+      `
+      );
+    }
+  );
+
+  // 创建页面命令
+  const CreatePage = commands.registerCommand(
+    "uniapp.create-page",
+    async (fileUri) => {
+      if (!fileUri) return;
+
+      const createDir = path.resolve(fileUri.fsPath);
+      if (!createDir) return;
+      const pageName = await window.showInputBox({
+        placeHolder: "页面名称",
+      });
+
+      const d = path.join(createDir, pageName);
+      const f = path.join(d, pageName + ".vue");
+      if (fs.existsSync(f)) {
+        return window.showErrorMessage("文件已存在!");
+      }
+
+      // update pages.json
+      const PAGES_JSON_NAME = "pages.json";
+      let dd = createDir;
+      let files = fs.readdirSync(dd);
+      while (!files.includes(PAGES_JSON_NAME)) {
+        files = fs.readdirSync((dd = path.dirname(dd)));
+        if (dd === path.dirname(dd)) {
+          return window.showErrorMessage(`未找到${PAGES_JSON_NAME}文件`);
+        }
+      }
+      const pagesFile = path.join(dd, PAGES_JSON_NAME);
+
+      const obj = cjson.parse(
+        fs.readFileSync(pagesFile, { encoding: "utf-8" }).toString()
+      );
+
+      obj.pages.push({
+        path: `${path.basename(createDir)}/${pageName}/${pageName}`,
+        style: {
+          navigationBarTitleText: "",
+          enablePullDownRefresh: false,
+        },
+      });
+
+      fs.writeFileSync(pagesFile, cjson.stringify(obj, null, 2), {
+        encoding: "utf-8",
+      });
+
+      // create page file
+      fs.mkdirSync(d);
+      fs.writeFileSync(
+        f,
+        `<template>
+  <view></view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        
+      };
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+    
+      `
+      );
+    }
+  );
+
   context.subscriptions.push(
+    CreateComponent,
+    CreatePage,
+
     //todo 给模板中的 脚本 添加特殊颜色
     new ActiveTextEditorListener(config),
 
