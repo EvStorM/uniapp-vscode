@@ -12,6 +12,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import * as path from "path";
 import * as fs from "fs";
+import * as url from "url";
 import * as cjson from "comment-json";
 
 import {
@@ -39,6 +40,9 @@ import { config, configActivate, configDeactivate } from "./plugin/lib/config";
 import { PropDefinitionProvider } from "./plugin/PropDefinitionProvider";
 
 export function activate(context: ExtensionContext) {
+  // const currentlyOpenTabfilePath = window.activeTextEditor?.document.uri.fsPath;
+  // console.log(currentlyOpenTabfilePath);
+
   // console.log('minapp-vscode is active!')
   configActivate();
 
@@ -141,21 +145,35 @@ export function activate(context: ExtensionContext) {
           return window.showErrorMessage(`未找到${PAGES_JSON_NAME}文件`);
         }
       }
-      const pagesFile = path.join(dd, PAGES_JSON_NAME);
 
-      const obj = cjson.parse(
-        fs.readFileSync(pagesFile, { encoding: "utf-8" }).toString()
+      let pageUrl = null;
+      for (const wf of workspace.workspaceFolders) {
+        const d = path.resolve(wf.uri.fsPath);
+        if (createDir.startsWith(d)) {
+          pageUrl = url.parse(
+            createDir.replace(d, "").replace(/^(\/|\\)+/, "")
+          ).path;
+        }
+      }
+
+      if (pageUrl === null)
+        return window.showErrorMessage(`创建${PAGES_JSON_NAME}失败!`);
+
+      const pagesFP = path.join(dd, PAGES_JSON_NAME);
+
+      const pagesData = cjson.parse(
+        fs.readFileSync(pagesFP, { encoding: "utf-8" }).toString()
       );
 
-      obj.pages.push({
-        path: `${path.basename(createDir)}/${pageName}/${pageName}`,
+      pagesData.pages.push({
+        path: path.posix.join(pageUrl, pageName, pageName),
         style: {
           navigationBarTitleText: "",
           enablePullDownRefresh: false,
         },
       });
 
-      fs.writeFileSync(pagesFile, cjson.stringify(obj, null, 2), {
+      fs.writeFileSync(pagesFP, cjson.stringify(pagesData, null, 2), {
         encoding: "utf-8",
       });
 
