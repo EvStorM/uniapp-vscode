@@ -39,12 +39,36 @@
     "Programming Languages"
   ],
   "activationEvents": [
+    "onCommand:uniapp.create-component",
+    "onCommand:uniapp.create-page",
     "workspaceContains:minapp.cjson",
     "onLanguage:wxml",
     "onLanguage:vue"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "uniapp.create-component",
+        "title": "Uniapp Create Component"
+      },
+      {
+        "command": "uniapp.create-page",
+        "title": "Uniapp Create Page"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "uniapp.create-component"
+        },
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "uniapp.create-page"
+        }
+      ]
+    },
     "configuration": {
       "title": "uniapp-vscode",
       "properties": {
@@ -331,10 +355,11 @@
   "dependencies": {
     "evils-uniapp": "3.1.3",
     "@minapp/wxml-parser": "^2.1.5",
-    "resolve": "^1.20.0",
+    "comment-json": "^4.1.1",
+    "json5": "^2.2.0",
+    "mora-common": "^1.0.25",
     "read-pkg-up": "^6.0.0",
-    "json5": "^0.5.1",
-    "mora-common": "^1.0.12"
+    "resolve": "^1.20.0"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
