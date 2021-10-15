@@ -1925,10 +1925,10 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-evils-uniapp@3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/evils-uniapp/-/evils-uniapp-3.1.3.tgz#cab67818942081ce5d2f88225a6f19cbd792098c"
-  integrity sha512-xEpzkeOoIWzXUSImsGZBB+TEGbTx0k94ddS3YlOMUFswSUuXc2HHaF/mp+lFhaqk9Ow2ZuSa4UUq5SEYCWVSjg==
+evils-uniapp@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/evils-uniapp/-/evils-uniapp-3.2.1.tgz#0873a67961452709d78aa5ffda2f0bc567c856d9"
+  integrity sha512-PS8ZpT0aCuRimjLZHo4oKyhIAf5WYVCeh05zEKHy+CPjZhhdXbBGRnaXgWk9nJ3XaKo26+14tqrh8xhDlivj5w==
   dependencies:
     json5 "^0.5.1"
     mora-common "^1.0.12"
